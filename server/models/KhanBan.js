@@ -13,6 +13,7 @@ const khanBanSchema = new Schema({
   status: {
     type: String,
     required: true,
+    default: 'To-Do'
   },
 });
 
