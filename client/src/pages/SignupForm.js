@@ -30,8 +30,6 @@ export default function SignupForm() {
       password: data.get("password"),
     };
 
-    console.log(userData);
-
     try {
       const { data } = await addUser({variables: {...userData}})
       Auth.login(data.addUser.token)
