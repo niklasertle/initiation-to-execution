@@ -61,13 +61,13 @@ const typeDefs = gql`
     addUser(username: String!, email: String!, password: String!): Auth
 
     createProject(title: String!, description: String!, startDate: Int, endDate: Int): Project
-    updateProject(projectId: ID!, title: String, description: String, startDate: Int, endDate: Int)
+    updateProject(projectId: ID!, title: String, description: String, startDate: Int, endDate: Int): Project
     addUserToProject(projectId: ID!, userId: ID!): Project
-    removeProject(projectId: ID!)
+    removeProject(projectId: ID!): Project
 
     addCalendar(projectId: ID!, title: String!, description: String!, dueDate: Int): Project
     updateCalendar(projectId: ID!, title: String, description: String, dueDate: Int, isComplete: Boolean): Project
-    removeCalendar(projectId: ID!: Project
+    removeCalendar(projectId: ID!): Project
 
     addKhanBan(projectId: ID!, title: String!, description: String!): Project
     updateKhanBan(projectId: ID!, title: String, description: String, status: String): Project
