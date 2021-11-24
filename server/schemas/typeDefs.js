@@ -2,14 +2,14 @@ const { gql } = require("apollo-server-express");
 
 const typeDefs = gql`
   type User {
-    _id: ID!
+    _id: ID
     username: String
     email: String
     password: String
   }
 
   type Project {
-      _id: ID!
+      _id: ID
       title: String
       description: String
       users: [User]
@@ -21,7 +21,7 @@ const typeDefs = gql`
   }
 
   type Calendar {
-      _id: ID!
+      _id: ID
       title: String
       description: String
       userId: User
@@ -30,7 +30,7 @@ const typeDefs = gql`
   }
 
   type KhanBan {
-      _id: ID!
+      _id: ID
       title: String
       description: String
       userId: User
@@ -38,14 +38,14 @@ const typeDefs = gql`
   }
 
   type Message {
-    _id: ID!
+    _id: ID
     message: String
     userId: User
     createdAt: String
   }
 
   type Auth {
-    token: ID!
+    token: ID
     user: User
   }
 
@@ -56,17 +56,10 @@ const typeDefs = gql`
     me: User
   }
 
-  input SaveProjectInput {
-    title: String
-    description: String
-    startDate: String
-    endDate: String
-  }
-
   type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
-    createProject(input: SaveProjectInput): Project
+    createProject(title: String, description: String, startDate: String, endDate: String): Project
     updateProject(projectId: ID!, title: String, description: String, startDate: Int, endDate: Int): Project
     addUserToProject(projectId: ID!, userId: ID!): Project
     deleteProject(projectId: ID!): Project
@@ -79,7 +72,5 @@ const typeDefs = gql`
     addMessage(message: String!): Message
   }
 `;
-
-// Add date scalar
 
 module.exports = typeDefs;

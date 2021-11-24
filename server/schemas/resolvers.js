@@ -22,8 +22,13 @@ const resolvers = {
     },
     project: async (parent, { projectId }) => {
       // Return everything in each array
-      return await Project.findOne({ _id: projectId }).populate(['message', 'calendar', 'khanBan', 'users']);
-    }
+      return await Project.findOne({ _id: projectId }).populate([
+        "message",
+        "calendar",
+        "khanBan",
+        "users",
+      ]);
+    },
   },
   Mutation: {
     login: async (parent, { email, password }) => {
@@ -40,7 +45,7 @@ const resolvers = {
       }
 
       const token = signToken(user);
-      return { token, user }
+      return { token, user };
     },
     addUser: async (parent, { username, email, password }) => {
       const user = await User.create({ username, email, password });
@@ -50,14 +55,16 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-    createProject: async (parent, { input }, context) => {
-      console.log(input);
-      const project = await Project.create({ input });
-      if (!project) {
-        return res.status(400).json({ message: "Something is wrong!" });
-      }
-  
-      return { project }
+    createProject: async (parent, { title, description, startDate, endDate }, context) => {
+      const project = await Project.create({ title, description, startDate, endDate});
+
+      const updatedProject = await Project.findOneAndUpdate(
+        { _id: project._id },
+        { $addToSet: { users: context.user._id } },
+        { new: true, runValidators: true }
+      );
+
+      return updatedProject;
     },
     updateProject: async (parent, args) => {
       // Update the project with the ID and return
@@ -102,7 +109,7 @@ const resolvers = {
       // Get project by ID
       // Add message to the array
       // Return project
-    }
+    },
   },
 };
 
