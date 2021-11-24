@@ -39,9 +39,9 @@ function App() {
       <Router>
         <>
           <Switch>
-            <PrivateRoute exact path='/'/>
             <Route exact path="/login" component={LoginForm} />
             <Route exact path="/signup" component={SignupForm} />
+            <PrivateRoute exact path='*'/>
           </Switch>
         </>
       </Router>
