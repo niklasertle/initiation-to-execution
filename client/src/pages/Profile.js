@@ -32,19 +32,18 @@ export default function Profile() {
     const data = new FormData(event.currentTarget);
 
     const projectData = {
-      username: data.get("title"),
-      email: data.get("description"),
+      title: data.get("title"),
+      description: data.get("description"),
       startDate: new Date(startDate),
-      endDate: new Date(endDate)
+      endDate: new Date(endDate),
     };
-
-    console.log(projectData);
 
     try {
       const { data } = await createProject({
-        variables: { input: projectData },
+        variables: projectData,
       });
-      console.log(data);
+
+      window.location.replace(`/project/${data.createProject._id}`);
     } catch (error) {
       console.error(error);
     }
