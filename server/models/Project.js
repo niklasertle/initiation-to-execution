@@ -7,25 +7,22 @@ const messageSchema = require("./Message");
 const projectSchema = new Schema({
   title: {
     type: String,
-    required: true,
     unique: true,
+    required: true
   },
   description: {
     type: String,
-    required: true,
   },
   users: [{ type: Schema.Types.ObjectId, ref: "User" }],
   calendar: [calendarSchema],
   khanBan: [khanBanSchema],
   messages: [messageSchema],
   startDate: {
-    type: Date,
-    required: true,
+    type: String,
     default: Date.now()
   },
   endDate: {
-    type: Date,
-    required: true,
+    type: String
   },
 });
 

@@ -22,3 +22,14 @@ export const ADD_USER = gql`
     }
   }
 `;
+
+export const CREATE_PROJECT = gql`
+  mutation createProject($title:String, $description:String, $startDate:String, $endDate:String){
+  createProject(title:$title, description:$description, startDate:$startDate, endDate:$endDate) {
+    _id
+    title
+    description
+  }
+}
+
+`;

@@ -2,35 +2,35 @@ const { gql } = require("apollo-server-express");
 
 const typeDefs = gql`
   type User {
-    _id: ID!
+    _id: ID
     username: String
     email: String
     password: String
   }
 
   type Project {
-      _id: ID!
+      _id: ID
       title: String
       description: String
       users: [User]
       calendar: [Calendar]
       khanBan: [KhanBan]
       messages: [Message]
-      startDate: Int
-      endDate: Int
+      startDate: String
+      endDate: String
   }
 
   type Calendar {
-      _id: ID!
+      _id: ID
       title: String
       description: String
       userId: User
-      dueDate: Int
+      dueDate: String
       isComplete: Boolean
   }
 
   type KhanBan {
-      _id: ID!
+      _id: ID
       title: String
       description: String
       userId: User
@@ -38,14 +38,14 @@ const typeDefs = gql`
   }
 
   type Message {
-    _id: ID!
+    _id: ID
     message: String
     userId: User
-    createdAt: Int
+    createdAt: String
   }
 
   type Auth {
-    token: ID!
+    token: ID
     user: User
   }
 
@@ -59,20 +59,16 @@ const typeDefs = gql`
   type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
-
-    createProject(title: String!, description: String!, startDate: Int, endDate: Int): Project
+    createProject(title: String, description: String, startDate: String, endDate: String): Project
     updateProject(projectId: ID!, title: String, description: String, startDate: Int, endDate: Int): Project
     addUserToProject(projectId: ID!, userId: ID!): Project
-    removeProject(projectId: ID!): Project
-
+    deleteProject(projectId: ID!): Project
     addCalendar(projectId: ID!, title: String!, description: String!, dueDate: Int): Project
-    updateCalendar(projectId: ID!, title: String, description: String, dueDate: Int, isComplete: Boolean): Project
-    removeCalendar(projectId: ID!): Project
-
+    updateCalendar(projectId: ID!, calendarId: ID!, isComplete: Boolean): Project
+    deleteCalendar(projectId: ID!, calendarId: ID!): Project
     addKhanBan(projectId: ID!, title: String!, description: String!): Project
-    updateKhanBan(projectId: ID!, title: String, description: String, status: String): Project
-    removeKhanBan(projectId: ID!): Project
-
+    updateKhanBan(projectId: ID!, khanBanId: ID!, status: String): Project
+    deleteKhanBan(projectId: ID!, khanBanId: ID!): Project
     addMessage(message: String!): Message
   }
 `;
