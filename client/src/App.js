@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import {
   ApolloClient,
@@ -7,11 +7,19 @@ import {
   createHttpLink,
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
-
+import React, { useState } from "react";
 import LoginForm from "./pages/LoginForm";
-import SignupForm from "./pages/SignupForm"
+import SignupForm from "./pages/SignupForm";
 import PrivateRoute from "./PrivateRoutes";
-import Navbar from "./components/Navbar/Navbar";
+import BootstrapNavbar from "./components/Navbar/Navbar";
+import CreateProject from "./pages/CreateProject";
+import Messages from "./pages/Messages";
+import Calendar from "./pages/Calendar";
+import Projects from "./pages/Projects";
+import "./App.css";
+import Board from "./components/Board/Board";
+
+
 
 const httpLink = createHttpLink({
   uri: "/graphql",
@@ -34,19 +42,39 @@ const client = new ApolloClient({
 });
 
 function App() {
-
   return (
     <ApolloProvider client={client}>
       <Router>
-      <Navbar />
         <>
           <Switch>
             <Route exact path="/login" component={LoginForm} />
             <Route exact path="/signup" component={SignupForm} />
-            <PrivateRoute exact path='*'/>
+            <PrivateRoute exact path="*" />
           </Switch>
+          <>
+            <div>
+              <Projects />
+            </div>
+          </>
         </>
       </Router>
+
+      <div className="app">
+        <div className="app_navbar">
+          <h1>Kanban</h1>
+        </div>
+        <div className="app_outer">
+          <div className="app_boards">
+            <Board />
+            <Board />
+            <Board />
+            <Board />
+            <Board />
+          </div>
+        </div>
+      </div>
+
+      <div className="sections"></div>
     </ApolloProvider>
   );
 }
