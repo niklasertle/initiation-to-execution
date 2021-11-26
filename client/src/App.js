@@ -18,6 +18,7 @@ import Calendar from "./pages/Calendar";
 import Projects from "./pages/Projects";
 import "./App.css";
 import Board from "./components/Board/Board";
+import Editable from "./components/Editable/Editable";
 
 
 
@@ -60,16 +61,18 @@ function App() {
       </Router>
 
       <div className="app">
-        <div className="app_navbar">
-          <h1>Kanban</h1>
+        <div className="app_nav">
+          <h1>Kanban Board</h1>
         </div>
-        <div className="app_outer">
+        <div className="app_boards_container">
           <div className="app_boards">
             <Board />
             <Board />
-            <Board />
-            <Board />
-            <Board />
+            <div className="app_boards_board">
+            <Editable displayClass="app_boards_board_add"
+            text="Add Board"
+            placeholder="Enter board title" />
+          </div>
           </div>
         </div>
       </div>
