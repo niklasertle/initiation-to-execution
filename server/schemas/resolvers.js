@@ -55,8 +55,17 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-    createProject: async (parent, { title, description, startDate, endDate }, context) => {
-      const project = await Project.create({ title, description, startDate, endDate});
+    createProject: async (
+      parent,
+      { title, description, startDate, endDate },
+      context
+    ) => {
+      const project = await Project.create({
+        title,
+        description,
+        startDate,
+        endDate,
+      });
 
       const updatedProject = await Project.findOneAndUpdate(
         { _id: project._id },
@@ -66,49 +75,104 @@ const resolvers = {
 
       return updatedProject;
     },
-    updateProject: async (parent, args) => {
-      // Update the project with the ID and return
+    addUserToProject: async (parent, { projectId, userId }) => {
+      const updatedProject = await Project.findOneAndUpdate(
+        { _id: projectId },
+        { $addToSet: { users: userId } },
+        { new: true, runValidators: true }
+      );
+
+      return updatedProject;
     },
-    addUserToProject: async (parent, args) => {
-      // Find project by ID
-      // Push the new user ID into users array
+    deleteProject: async (parent, { projectId }) => {
+      await Project.remove({ _id: projectId });
+
+      return { message: "Project deleted successfully" };
     },
-    deleteProject: async (parent, args) => {
-      // Delete a project by ID
+    addCalendar: async (
+      parent,
+      { projectId, title, description, dueDate },
+      context
+    ) => {
+      const newCalendar = {
+        title,
+        description,
+        dueDate,
+        userId: context.user._id,
+      };
+
+      const updatedProject = await Project.findOneAndUpdate(
+        { _id: projectId },
+        { $addToSet: { calendar: newCalendar } },
+        { new: true, runValidators: true }
+      );
+
+      return updatedProject;
     },
-    addCalendar: async (parent, args, context) => {
-      // Get the project
-      // Create a calendar event
-      // Push into calendar array on project
+    updateCalendar: async (parent, { projectId, calendarId, isComplete }) => {
+      const updatedProject = await Project.findOneAndUpdate(
+        { _id: projectId, calendar: { $elemMatch: { _id: calendarId } } },
+        { $set: { "calendar.$.isComplete": isComplete } },
+        { new: true, safe: true, upsert: true }
+      );
+
+      return updatedProject;
     },
-    updateCalendar: async (parent, args) => {
-      // Find project by ID
-      // Find calendar event in array on the project
-      // Update the isComplete from false to true
+    deleteCalendar: async (parent, { projectId, calendarId }) => {
+      const updatedProject = await Project.findOneAndUpdate(
+        { _id: projectId },
+        { $pull: { calendar: { _id: calendarId } } },
+        { new: true }
+      );
+
+      return updatedProject;
     },
-    deleteCalendar: async (parent, args) => {
-      // Delete calendar event by ID
+    addKhanBan: async (parent, { projectId, title, description }, context) => {
+      const newKhanBan = {
+        title,
+        description,
+        userId: context.user._id,
+      };
+
+      const updatedProject = await Project.findOneAndUpdate(
+        { _id: projectId },
+        { $addToSet: { khanBan: newKhanBan } },
+        { new: true, runValidators: true }
+      );
+
+      return updatedProject;
     },
-    addKhanBan: async (parent, args, context) => {
-      // Get project by ID
-      // Add Khan Ban post to array
-      // Return the project
+    updateKhanBanStatus: async (parent, { projectId, khanBanId, status }) => {
+      const updatedProject = await Project.findOneAndUpdate(
+        { _id: projectId, khanBan: { $elemMatch: { _id: khanBanId } } },
+        { $set: { "khanBan.$.status": status } },
+        { new: true, safe: true, upsert: true }
+      );
+
+      return updatedProject;
     },
-    updateKhanBan: async (parent, args, context) => {
-      // Get project by ID
-      // Get khanBan event by ID
-      // Update the status
-      // Return project
+    deleteKhanBan: async (parent, { projectId, khanBanId }) => {
+      const updatedProject = await Project.findOneAndUpdate(
+        { _id: projectId },
+        { $pull: { khanBan: { _id: khanBanId } } },
+        { new: true }
+      );
+
+      return updatedProject;
     },
-    deleteKhanBan: async (parent, args) => {
-      // Get project by ID
-      // Remove KhanBan by ID from the array
-      // Return project
-    },
-    addMessage: async (parent, args, context) => {
-      // Get project by ID
-      // Add message to the array
-      // Return project
+    addMessage: async (parent, { projectId, message }, context) => {
+      const newMessage = {
+        message,
+        userId: context.user._id,
+      };
+
+      const updatedProject = await Project.findOneAndUpdate(
+        { _id: projectId },
+        { $addToSet: { calendar: newMessage } },
+        { new: true, runValidators: true }
+      );
+
+      return updatedProject;
     },
   },
 };

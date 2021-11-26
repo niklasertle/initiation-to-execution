@@ -60,16 +60,15 @@ const typeDefs = gql`
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
     createProject(title: String, description: String, startDate: String, endDate: String): Project
-    updateProject(projectId: ID!, title: String, description: String, startDate: Int, endDate: Int): Project
     addUserToProject(projectId: ID!, userId: ID!): Project
     deleteProject(projectId: ID!): Project
     addCalendar(projectId: ID!, title: String!, description: String!, dueDate: Int): Project
-    updateCalendar(projectId: ID!, calendarId: ID!, isComplete: Boolean): Project
+    updateCalendar(projectId: ID!, khanBanId: ID!, isComplete: Boolean!): Project
     deleteCalendar(projectId: ID!, calendarId: ID!): Project
     addKhanBan(projectId: ID!, title: String!, description: String!): Project
-    updateKhanBan(projectId: ID!, khanBanId: ID!, status: String): Project
+    updateKhanBanStatus(projectId: ID!, khanBanId: ID!, status: String!): Project
     deleteKhanBan(projectId: ID!, khanBanId: ID!): Project
-    addMessage(message: String!): Message
+    addMessage(projectId: ID!, message: String!): Message
   }
 `;
 
