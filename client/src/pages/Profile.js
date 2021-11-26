@@ -7,10 +7,12 @@ import DatePicker from "@mui/lab/DatePicker";
 import { useMutation } from "@apollo/client";
 
 import Auth from "../utils/auth";
+
 import { CREATE_PROJECT } from "../utils/mutations";
 
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
+
 
 export default function Profile() {
   const [open, setOpen] = useState(false);
@@ -51,6 +53,7 @@ export default function Profile() {
 
   return (
     <>
+
       <h1>LOGGED IN LETS GO!!!</h1>
 
       <Button onClick={handleOpen}>Create Project</Button>
@@ -122,12 +125,16 @@ export default function Profile() {
       </Modal>
 
       <Button
+
         onClick={() => {
           Auth.logout();
         }}
       >
         Logout
       </Button>
+
+      <h1>LOGGED INTO PROFILE PAGE LETS GO!!!</h1>
+  
     </>
   );
 }
