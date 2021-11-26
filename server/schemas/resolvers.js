@@ -17,8 +17,10 @@ const resolvers = {
       }
       throw new AuthenticationError("Not logged in");
     },
-    projects: async (parent, { userId }) => {
-      return await Project.findOne({ users: context.user._id });
+    projects: async (parent, args, context) => {
+      return await Project.findALl({
+        _id: { $in: { users: { _id: context.user._id } } },
+      });
     },
     project: async (parent, { projectId }) => {
       // Return everything in each array

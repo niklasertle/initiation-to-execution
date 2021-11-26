@@ -51,7 +51,7 @@ const typeDefs = gql`
 
   type Query {
     users: [User]
-    projects(userId: ID!): [Project]
+    projects: [Project]
     project(projectId: ID!): Project
     me: User
   }
@@ -62,13 +62,13 @@ const typeDefs = gql`
     createProject(title: String, description: String, startDate: String, endDate: String): Project
     addUserToProject(projectId: ID!, userId: ID!): Project
     deleteProject(projectId: ID!): Project
-    addCalendar(projectId: ID!, title: String!, description: String!, dueDate: Int): Project
-    updateCalendar(projectId: ID!, khanBanId: ID!, isComplete: Boolean!): Project
+    addCalendar(projectId: ID!, title: String!, description: String!, dueDate: String): Project
+    updateCalendar(projectId: ID!, calendarId: ID!, isComplete: Boolean!): Project
     deleteCalendar(projectId: ID!, calendarId: ID!): Project
     addKhanBan(projectId: ID!, title: String!, description: String!): Project
     updateKhanBanStatus(projectId: ID!, khanBanId: ID!, status: String!): Project
     deleteKhanBan(projectId: ID!, khanBanId: ID!): Project
-    addMessage(projectId: ID!, message: String!): Message
+    addMessage(projectId: ID!, message: String!): Project
   }
 `;
 
