@@ -1,0 +1,23 @@
+.navbarstuff {
+    background-color: #12151c;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    transition: top 0.3s;
+    height: 11vh;
+  }
+  
+  .navbarstuff a {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    text-decoration: none;
+  }
+  
+  .navbarstuff a:hover {
+    background: #46bdd5;
+    color: black;
+  }
+  
