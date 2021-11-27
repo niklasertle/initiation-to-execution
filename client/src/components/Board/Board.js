@@ -7,14 +7,14 @@ import Dropdown from "../Dropdown/Dropdown";
 
 import "./Board.css";
 
-function Board() {
+function Board(props) {
     const [showDropdown,setShowDropdown]=useState(false);
 
   return (
     <div className="board">
       <div className="board_top">
         <p className="board_top_title">
-          To Do <span> 2</span>
+          {props.board?.title} <span>{` ${props.board?.cards?.length}`}</span>
         </p>
         <div className="board_top_more" onClick={()=>setShowDropdown(true)}>
           <MoreHorizontal />
@@ -31,8 +31,10 @@ function Board() {
         </div>
       </div>
       <div className="board_cards custom-scroll">
-        <Card />
-        <Card />
+        {
+          props.board?.cards?.map((item) => (
+          <Card key={item.id} card={item} />
+          ))}
         <Editable
           displayClass="boards_cards_add"
           text="Add Card"
