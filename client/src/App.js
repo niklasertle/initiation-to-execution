@@ -149,7 +149,11 @@ function App() {
         <div className="app_boards_container">
           <div className="app_boards">
             {boards.map((item) => (
-              <Board key={item.id} board={item} />
+              <Board key={item.id} board={item}
+                removeBoard={removeBoard}
+                addCard={addCard}
+                removeCard={removeCard}
+              />
             ))}
             <div className="app_boards_board">
               <Editable
