@@ -12,6 +12,7 @@ import { CREATE_PROJECT } from "../utils/mutations";
 
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
+import Kanban from "../components/Kanban/Kanban";
 
 
 export default function Profile() {
@@ -134,6 +135,7 @@ export default function Profile() {
       </Button>
 
       <h1>LOGGED INTO PROFILE PAGE LETS GO!!!</h1>
+      <Kanban /> 
   
     </>
   );

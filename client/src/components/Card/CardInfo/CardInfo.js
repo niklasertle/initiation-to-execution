@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
 import {
-  Type,
-  List,
   Calendar,
-  Tag,
   CheckSquare,
+  List,
+  Tag,
   Trash,
+  Type,
   X,
 } from "react-feather";
 
 import Modal from "../../Modal/Modal";
-import Editable from "../../Editable/Editable";
+import Editable from "../../Editabled/Editable";
 
 import "./CardInfo.css";
 
@@ -26,7 +26,9 @@ function CardInfo(props) {
   ];
 
   const [selectedColor, setSelectedColor] = useState();
-  const [values, setValues] = useState({ ...props.card });
+  const [values, setValues] = useState({
+    ...props.card,
+  });
 
   const updateTitle = (value) => {
     setValues({ ...values, title: value });
@@ -34,12 +36,6 @@ function CardInfo(props) {
 
   const updateDesc = (value) => {
     setValues({ ...values, desc: value });
-  };
-
-  const calculatePercent = () => {
-    if (!values.tasks?.length) return 0;
-    const completed = values.tasks?.filter((item) => item.completed)?.length;
-    return (completed / values.tasks?.length) * 100;
   };
 
   const addLabel = (label) => {
@@ -98,6 +94,12 @@ function CardInfo(props) {
     });
   };
 
+  const calculatePercent = () => {
+    if (!values.tasks?.length) return 0;
+    const completed = values.tasks?.filter((item) => item.completed)?.length;
+    return (completed / values.tasks?.length) * 100;
+  };
+
   const updateDate = (date) => {
     if (!date) return;
 
@@ -120,8 +122,8 @@ function CardInfo(props) {
             <p>Title</p>
           </div>
           <Editable
-            text={values.title}
             defaultValue={values.title}
+            text={values.title}
             placeholder="Enter Title"
             onSubmit={updateTitle}
           />
@@ -133,10 +135,10 @@ function CardInfo(props) {
             <p>Description</p>
           </div>
           <Editable
+            defaultValue={values.desc}
             text={values.desc || "Add a Description"}
-            default={values.desc}
+            placeholder="Enter description"
             onSubmit={updateDesc}
-            placeholder="Enter Description"
           />
         </div>
 
@@ -145,12 +147,12 @@ function CardInfo(props) {
             <Calendar />
             <p>Date</p>
           </div>
-             <input
-              type="date"
-              defaultValue={values.date}
-              min={new Date().toISOString().substr(0, 10)}
-              onChange={(event) => updateDate(event.target.value)}
-            />          
+          <input
+            type="date"
+            defaultValue={values.date}
+            min={new Date().toISOString().substr(0, 10)}
+            onChange={(event) => updateDate(event.target.value)}
+          />
         </div>
 
         <div className="cardinfo_box">
@@ -160,32 +162,32 @@ function CardInfo(props) {
           </div>
           <div className="cardinfo_box_labels">
             {values.labels?.map((item, index) => (
-             <label
-             key={index}
-             style={{ backgroundColor: item.color, color: "#fff" }}
-           >
-             {item.text}
-             <X onClick={() => removeLabel(item)} />
-           </label>
+              <label
+                key={index}
+                style={{ backgroundColor: item.color, color: "#fff" }}
+              >
+                {item.text}
+                <X onClick={() => removeLabel(item)} />
+              </label>
             ))}
           </div>
           <ul>
             {colors.map((item, index) => (
               <li
-              key={index + item}
+                key={index + item}
                 style={{ backgroundColor: item }}
                 className={selectedColor === item ? "li_active" : ""}
                 onClick={() => setSelectedColor(item)}
               />
             ))}
           </ul>
-            <Editable
-              text="Add Label"
-              placeholder="Enter Label text"
-              onSubmit={(value) =>
-                addLabel({ color: selectedColor, text: value })
-              }
-            />
+          <Editable
+            text="Add Label"
+            placeholder="Enter label text"
+            onSubmit={(value) =>
+              addLabel({ color: selectedColor, text: value })
+            }
+          />
         </div>
 
         <div className="cardinfo_box">
@@ -193,7 +195,6 @@ function CardInfo(props) {
             <CheckSquare />
             <p>Tasks</p>
           </div>
-
           <div className="cardinfo_box_progress-bar">
             <div
               className="cardinfo_box_progress"
@@ -203,7 +204,6 @@ function CardInfo(props) {
               }}
             />
           </div>
-
           <div className="cardinfo_box_task_list">
             {values.tasks?.map((item) => (
               <div key={item.id} className="cardinfo_box_task_checkbox">
@@ -218,10 +218,8 @@ function CardInfo(props) {
                 <Trash onClick={() => removeTask(item.id)} />
               </div>
             ))}
-
-            </div>
-
-            <Editable
+          </div>
+          <Editable
             text={"Add a Task"}
             placeholder="Enter task"
             onSubmit={addTask}
