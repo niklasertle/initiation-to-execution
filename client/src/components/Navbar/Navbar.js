@@ -17,7 +17,6 @@ import {
 export default function ProjectNavbar({ setCurrentPage }) {
   return (
     <>
-      <Button onClick={() => setCurrentPage("Calendar")}>Calendar</Button>
       <Button onClick={() => setCurrentPage("KhanBan")}>Khan Ban</Button>
       <Button onClick={() => setCurrentPage("Messages")}>Messages</Button>
       <Button onClick={() => setCurrentPage("Settings")}>Settings</Button>

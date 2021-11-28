@@ -64,68 +64,6 @@ export const DELETE_PROJECT = gql`
   }
 `;
 
-export const ADD_CALENDAR = gql`
-  mutation addCalendar(
-    $projectId: ID!
-    $title: String!
-    $description: String!
-    $dueDate: String
-  ) {
-    addCalendar(
-      projectId: $projectId
-      title: $title
-      description: $description
-      dueDate: $dueDate
-    ) {
-      _id
-      title
-      description
-      calendar {
-        _id
-        title
-        description
-        dueDate
-        isComplete
-      }
-    }
-  }
-`;
-
-export const UPDATE_CALENDAR = gql`
-  mutation updateCalendar(
-    $projectId: ID!
-    $calendarId: ID!
-    $isComplete: Boolean!
-  ) {
-    updateCalendar(
-      projectId: $projectId
-      calendarId: $calendarId
-      isComplete: $isComplete
-    ) {
-      title
-      description
-      calendar {
-        title
-        description
-        dueDate
-        isComplete
-      }
-    }
-  }
-`;
-
-export const DELETE_CALENDAR = gql`
-  mutation deleteCalendar($projectId: ID!, $calendarId: ID!) {
-    deleteCalendar(projectId: $projectId, calendarId: $calendarId) {
-      title
-      description
-      calendar {
-        title
-      }
-    }
-  }
-`;
-
 export const ADD_KHAN_BAN = gql`
   mutation addKhanBan($projectId: ID!, $title: String!, $description: String!) {
     addKhanBan(

@@ -40,16 +40,6 @@ export const GET_PROJECT = gql`
         username
         email
       }
-      calendar {
-        _id
-        title
-        description
-        userId {
-          username
-        }
-        dueDate
-        isComplete
-      }
       khanBan {
         _id
         title

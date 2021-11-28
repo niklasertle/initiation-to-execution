@@ -88,44 +88,6 @@ const resolvers = {
 
       return { message: "Project deleted successfully" };
     },
-    addCalendar: async (
-      parent,
-      { projectId, title, description, dueDate },
-      context
-    ) => {
-      const newCalendar = {
-        title,
-        description,
-        dueDate,
-        userId: context.user._id,
-      };
-
-      const updatedProject = await Project.findOneAndUpdate(
-        { _id: projectId },
-        { $addToSet: { calendar: newCalendar } },
-        { new: true, runValidators: true }
-      );
-
-      return updatedProject;
-    },
-    updateCalendar: async (parent, { projectId, calendarId, isComplete }) => {
-      const updatedProject = await Project.findOneAndUpdate(
-        { _id: projectId, calendar: { $elemMatch: { _id: calendarId } } },
-        { $set: { "calendar.$.isComplete": isComplete } },
-        { new: true, safe: true, upsert: true }
-      );
-
-      return updatedProject;
-    },
-    deleteCalendar: async (parent, { projectId, calendarId }) => {
-      const updatedProject = await Project.findOneAndUpdate(
-        { _id: projectId },
-        { $pull: { calendar: { _id: calendarId } } },
-        { new: true }
-      );
-
-      return updatedProject;
-    },
     addKhanBan: async (parent, { projectId, title, description }, context) => {
       const newKhanBan = {
         title,
