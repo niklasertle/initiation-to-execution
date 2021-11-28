@@ -1,6 +1,7 @@
 const { AuthenticationError } = require("apollo-server-errors");
 const { User, Project } = require("../models");
 const { signToken } = require("../utils/auth");
+const { Types } = require("mongoose");
 
 const resolvers = {
   Query: {
@@ -9,17 +10,13 @@ const resolvers = {
     },
     me: async (parent, args, context) => {
       if (context.user) {
-        const user = await User.findOne({ _id: context.user._id });
-        // Find all projects where the user._id is in the users array
-        const projects = await Project.findAll({ users: context.user._id });
-
-        return { user, projects };
+        return await User.findOne({ _id: context.user._id });
       }
       throw new AuthenticationError("Not logged in");
     },
-    projects: async (parent, args, context) => {
-      return await Project.findALl({
-        _id: { $in: { users: { _id: context.user._id } } },
+    projects: async (parent, { userId }) => {
+      return await Project.find({
+        users: Types.ObjectId(userId),
       });
     },
     project: async (parent, { projectId }) => {
@@ -90,44 +87,6 @@ const resolvers = {
       await Project.remove({ _id: projectId });
 
       return { message: "Project deleted successfully" };
-    },
-    addCalendar: async (
-      parent,
-      { projectId, title, description, dueDate },
-      context
-    ) => {
-      const newCalendar = {
-        title,
-        description,
-        dueDate,
-        userId: context.user._id,
-      };
-
-      const updatedProject = await Project.findOneAndUpdate(
-        { _id: projectId },
-        { $addToSet: { calendar: newCalendar } },
-        { new: true, runValidators: true }
-      );
-
-      return updatedProject;
-    },
-    updateCalendar: async (parent, { projectId, calendarId, isComplete }) => {
-      const updatedProject = await Project.findOneAndUpdate(
-        { _id: projectId, calendar: { $elemMatch: { _id: calendarId } } },
-        { $set: { "calendar.$.isComplete": isComplete } },
-        { new: true, safe: true, upsert: true }
-      );
-
-      return updatedProject;
-    },
-    deleteCalendar: async (parent, { projectId, calendarId }) => {
-      const updatedProject = await Project.findOneAndUpdate(
-        { _id: projectId },
-        { $pull: { calendar: { _id: calendarId } } },
-        { new: true }
-      );
-
-      return updatedProject;
     },
     addKhanBan: async (parent, { projectId, title, description }, context) => {
       const newKhanBan = {

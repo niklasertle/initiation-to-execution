@@ -20,8 +20,8 @@ export const GET_ALL_USERS = gql`
 `;
 
 export const GET_ALL_PROJECTS = gql`
-  query projects {
-    projects {
+  query projects($userId: ID!) {
+    projects(userId: $userId){
       _id
       title
       description
@@ -39,16 +39,6 @@ export const GET_PROJECT = gql`
         _id
         username
         email
-      }
-      calendar {
-        _id
-        title
-        description
-        userId {
-          username
-        }
-        dueDate
-        isComplete
       }
       khanBan {
         _id
