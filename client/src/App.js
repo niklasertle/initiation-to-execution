@@ -187,11 +187,6 @@ function App() {
             <Route exact path="/signup" component={SignupForm} />
             <PrivateRoute exact path="*" />
           </Switch>
-          <>
-            <div>
-              <Projects />
-            </div>
-          </>
         </>
       </Router>
 

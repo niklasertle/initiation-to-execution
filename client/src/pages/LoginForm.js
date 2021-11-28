@@ -10,10 +10,10 @@ import Typography from "@mui/material/Typography";
 import CssBaseline from "@mui/material/CssBaseline";
 import Paper from "@mui/material/Paper";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { useMutation } from '@apollo/client';
+import { useMutation } from "@apollo/client";
 
-import { LOGIN_USER } from '../utils/mutations'
-import Auth from '../utils/auth';
+import { LOGIN_USER } from "../utils/mutations";
+import Auth from "../utils/auth";
 
 const theme = createTheme();
 
@@ -32,8 +32,8 @@ export default function LoginForm() {
     console.log(userData);
 
     try {
-      const { data } = await loginUser({variables: {...userData}})
-      Auth.login(data.login.token)
+      const { data } = await loginUser({ variables: { ...userData } });
+      Auth.login(data.login.token);
     } catch (error) {
       console.error(error);
     }

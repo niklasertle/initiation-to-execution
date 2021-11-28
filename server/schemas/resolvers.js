@@ -1,6 +1,7 @@
 const { AuthenticationError } = require("apollo-server-errors");
 const { User, Project } = require("../models");
 const { signToken } = require("../utils/auth");
+const { Types } = require("mongoose");
 
 const resolvers = {
   Query: {
@@ -9,17 +10,13 @@ const resolvers = {
     },
     me: async (parent, args, context) => {
       if (context.user) {
-        const user = await User.findOne({ _id: context.user._id });
-        // Find all projects where the user._id is in the users array
-        const projects = await Project.findAll({ users: context.user._id });
-
-        return { user, projects };
+        return await User.findOne({ _id: context.user._id });
       }
       throw new AuthenticationError("Not logged in");
     },
-    projects: async (parent, args, context) => {
-      return await Project.findALl({
-        _id: { $in: { users: { _id: context.user._id } } },
+    projects: async (parent, { userId }) => {
+      return await Project.find({
+        users: Types.ObjectId(userId),
       });
     },
     project: async (parent, { projectId }) => {
