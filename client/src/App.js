@@ -1,4 +1,3 @@
-// import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import {
   ApolloClient,
@@ -54,6 +53,7 @@ function App() {
           tasks: [],
           labels: [
             {
+              // id:Date.now() +Math.random(),
               text: "frontend",
               color: "blue",
             },
@@ -142,14 +142,16 @@ function App() {
     t_bIndex = boards.findIndex((item) => item.id === target.bid);
     if (t_bIndex < 0) return;
 
-    t_cIndex = boards[t_bIndex].cards?.findIndex((item) => item.id === target.cid);
+    t_cIndex = boards[t_bIndex].cards?.findIndex(
+      (item) => item.id === target.cid
+    );
     if (t_cIndex < 0) return;
 
-    const tempBoards=[...boards]
-    const tempCard=tempBoards[s_bIndex].cards[s_cIndex]
+    const tempBoards = [...boards];
+    const tempCard = tempBoards[s_bIndex].cards[s_cIndex];
 
-    tempBoards[s_bIndex].cards.splice(s_cIndex,1);
-    tempBoards[t_bIndex].cards.splice(t_cIndex,0,tempCard);
+    tempBoards[s_bIndex].cards.splice(s_cIndex, 1);
+    tempBoards[t_bIndex].cards.splice(t_cIndex, 0, tempCard);
 
     setBoards(tempBoards);
   };
@@ -160,6 +162,21 @@ function App() {
       bid,
     });
   };
+
+  const updateCard=(cid,bid,card) =>{
+    const bIndex = boards.findIndex((item) => item.id === bid);
+    if (bIndex < 0) return;
+
+    const cIndex = boards[bIndex].cards.findIndex((item) => item.id === cid);
+    if (cIndex < 0) return;
+
+    const tempBoards=[...boards]
+    tempBoards[bIndex].cards[cIndex] = card;
+    setBoards(tempBoards);
+  };
+
+
+
 
   return (
     <ApolloProvider client={client}>
@@ -193,6 +210,7 @@ function App() {
                 removeCard={removeCard}
                 handleDragEnd={handleDragEnd}
                 handleDragEnter={handleDragEnter}
+                updateCard={updateCard}
               />
             ))}
             <div className="app_boards_board">
