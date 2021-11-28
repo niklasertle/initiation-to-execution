@@ -56,7 +56,7 @@ function App() {
             <Route exact path="/signup" component={SignupForm} />
             <PrivateRoute exact path="*" />
           </Switch>
-          {/* <Kanban /> */}
+          
           <>
             <div>
               {/* <Projects /> */}
