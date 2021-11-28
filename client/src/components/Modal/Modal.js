@@ -7,7 +7,7 @@ function Modal(props) {
     onClick={() => (props.onClose ? props.onClose() : "")}
     >
       <div
-        className="modal_content"
+        className="modal_content custom-scroll"
         onClick={(event) => event.stopPropagation()}
       >
         {props.children}
