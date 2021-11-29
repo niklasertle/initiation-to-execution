@@ -16,14 +16,12 @@ import Projects from "./pages/Projects";
 
 //KANBAN IMPORTS
 import React, { useState, useEffect, useRef } from "react";
-// import Board from "./components/Board/Board";
-// import Editable from "./components/Editabled/Editable";
 import "./App.css";
 
 import Kanban from "./components/Kanban/Kanban";
 
 //Chat Feature
-// import Chat from "../src/components/Chat/Chat";
+
 
 const httpLink = createHttpLink({
   uri: "/graphql",
@@ -62,6 +60,7 @@ function App() {
 
       <div className="sections">
         <Kanban />
+     
       </div>
     </ApolloProvider>
   );
