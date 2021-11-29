@@ -23,7 +23,7 @@ import "./App.css";
 import Kanban from "./components/Kanban/Kanban";
 
 //Chat Feature
-import Chat from "../src/components/Chat/Chat";
+// import Chat from "../src/components/Chat/Chat";
 
 const httpLink = createHttpLink({
   uri: "/graphql",
@@ -60,7 +60,9 @@ function App() {
         <></>
       </Router>
 
-      <div className="sections"></div>
+      <div className="sections">
+        <Kanban />
+      </div>
     </ApolloProvider>
   );
 }
