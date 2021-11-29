@@ -10,10 +10,10 @@ import Typography from "@mui/material/Typography";
 import CssBaseline from "@mui/material/CssBaseline";
 import Paper from "@mui/material/Paper";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { useMutation } from '@apollo/client';
+import { useMutation } from "@apollo/client";
 
-import { ADD_USER } from '../utils/mutations';
-import Auth from '../utils/auth';
+import { ADD_USER } from "../utils/mutations";
+import Auth from "../utils/auth";
 
 const theme = createTheme();
 
@@ -31,8 +31,8 @@ export default function SignupForm() {
     };
 
     try {
-      const { data } = await addUser({variables: {...userData}})
-      Auth.login(data.addUser.token)
+      const { data } = await addUser({ variables: { ...userData } });
+      Auth.login(data.addUser.token);
     } catch (error) {
       console.error(error);
     }

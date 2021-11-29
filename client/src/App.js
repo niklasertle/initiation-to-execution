@@ -12,7 +12,6 @@ import PrivateRoute from "./PrivateRoutes";
 import BootstrapNavbar from "./components/Navbar/Navbar";
 import CreateProject from "./pages/CreateProject";
 import Messages from "./pages/Messages";
-import Calendar from "./pages/Calendar";
 import Projects from "./pages/Projects";
 
 //KANBAN IMPORTS
@@ -56,13 +55,6 @@ function App() {
             <Route exact path="/signup" component={SignupForm} />
             <PrivateRoute exact path="*" />
           </Switch>
-          
-          <>
-            <div>
-              {/* <Projects /> */}
-              <Chat />
-            </div>
-          </>
         </>
 
         <></>
