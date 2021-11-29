@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { MoreHorizontal } from "react-feather";
 
 import Card from "../Card/Card";
-import Editable from "../Editable/Editable";
 import Dropdown from "../Dropdown/Dropdown";
+import Editable from "../Editabled/Editable";
 
 import "./Board.css";
 
@@ -12,19 +12,22 @@ function Board(props) {
 
   return (
     <div className="board">
-      <div className="board_top">
-        <p className="board_top_title">
-          {props.board?.title} <span>{` ${props.board?.cards?.length}`}</span>
+      <div className="board_header">
+        <p className="board_header_title">
+          {props.board?.title}
+          <span>{props.board?.cards?.length || 0 }</span>
         </p>
-        <div className="board_top_more" onClick={() => setShowDropdown(true)}>
+        <div
+          className="board_header_title_more"
+          onClick={() => setShowDropdown(true)}
+        >
           <MoreHorizontal />
           {showDropdown && (
-            <Dropdown onClose={() => setShowDropdown(false)}>
-              <div className="board_dropdown">
-                <p onClick={() => props.removeBoard(props.board?.id)}>
-                  Delete Board
-                </p>
-              </div>
+            <Dropdown
+              class="board_dropdown"
+              onClose={() => setShowDropdown(false)}
+            >
+              <p onClick={() => props.removeBoard()}>Delete Board</p>
             </Dropdown>
           )}
         </div>
@@ -34,18 +37,19 @@ function Board(props) {
           <Card
             key={item.id}
             card={item}
+            boardId={props.board.id}
             removeCard={props.removeCard}
-            boardId={props.board?.id}
-            handleDragEnd={props.handleDragEnd}
-            handleDragEnter={props.handleDragEnter}
+            dragEntered={props.dragEntered}
+            dragEnded={props.dragEnded}
             updateCard={props.updateCard}
           />
         ))}
         <Editable
-          displayClass="boards_cards_add"
-          text="Add Card"
+          text="+ Add Card"
           placeholder="Enter Card Title"
-          onSubmit={(value) => props.addCard(value, props.board?.id)}
+          displayClass="board_add-card"
+          editClass="board_add-card_edit"
+          onSubmit={(value) => props.addCard(props.board?.id, value)}
         />
       </div>
     </div>

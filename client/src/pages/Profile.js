@@ -14,6 +14,7 @@ import { GET_ME } from "../utils/queries";
 
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
+import Kanban from "../components/Kanban/Kanban";
 
 export default function Profile() {
   // useState to watch if the modal should be open
