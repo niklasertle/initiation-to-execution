@@ -1,6 +1,6 @@
 const { Schema, model } = require("mongoose");
 
-const khanBanSchema = require("./KhanBan");
+const kanbanSchema = require("./Kanban");
 const messageSchema = require("./Message");
 
 const projectSchema = new Schema({
@@ -13,7 +13,7 @@ const projectSchema = new Schema({
     type: String,
   },
   users: [{ type: Schema.Types.ObjectId, ref: "User" }],
-  khanBan: [khanBanSchema],
+  kanban: [kanbanSchema],
   messages: [messageSchema],
   startDate: {
     type: String,

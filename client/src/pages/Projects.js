@@ -1,17 +1,16 @@
 import React, { useState } from "react";
-import Button from "@mui/material/Button";
-import ProjectNavbar from "../components/Navbar/Navbar";
+import ProjectNavbar from "../components/ProjectNavbar/Navbar";
 
-import KhanBan from "./KhanBan";
-import Messages from "./Messages";
-import Settings from "./Settings";
+import Kanban from "../components/Kanban";
+import Messages from "../components/Messages";
+import Settings from "../components/Settings";
 
 export default function Projects() {
   const [currentPage, setCurrentPage] = useState("KhanBan");
 
   function renderPage() {
-    if ((currentPage === "KhanBan")) {
-      return <KhanBan />;
+    if ((currentPage === "Kanban")) {
+      return <Kanban />;
     }
     if ((currentPage === "Messages")) {
       return <Messages />;

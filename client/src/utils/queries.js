@@ -40,7 +40,7 @@ export const GET_PROJECT = gql`
         username
         email
       }
-      khanBan {
+      kanban {
         _id
         title
         description

@@ -13,13 +13,13 @@ const typeDefs = gql`
       title: String
       description: String
       users: [User]
-      khanBan: [KhanBan]
+      kanban: [Kanban]
       messages: [Message]
       startDate: String
       endDate: String
   }
 
-  type KhanBan {
+  type Kanban {
       _id: ID
       title: String
       description: String
@@ -52,9 +52,9 @@ const typeDefs = gql`
     createProject(title: String, description: String, startDate: String, endDate: String): Project
     addUserToProject(projectId: ID!, userId: ID!): Project
     deleteProject(projectId: ID!): Project
-    addKhanBan(projectId: ID!, title: String!, description: String!): Project
-    updateKhanBanStatus(projectId: ID!, khanBanId: ID!, status: String!): Project
-    deleteKhanBan(projectId: ID!, khanBanId: ID!): Project
+    addKanban(projectId: ID!, title: String!, description: String!): Project
+    updateKanbanStatus(projectId: ID!, kanbanId: ID!, status: String!): Project
+    deleteKanban(projectId: ID!, kanbanId: ID!): Project
     addMessage(projectId: ID!, message: String!): Project
   }
 `;

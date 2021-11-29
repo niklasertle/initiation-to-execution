@@ -1,3 +1,4 @@
+import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import {
   ApolloClient,
@@ -9,19 +10,8 @@ import { setContext } from "@apollo/client/link/context";
 import LoginForm from "./pages/LoginForm";
 import SignupForm from "./pages/SignupForm";
 import PrivateRoute from "./PrivateRoutes";
-import BootstrapNavbar from "./components/Navbar/Navbar";
-import CreateProject from "./pages/CreateProject";
-import Messages from "./pages/Messages";
-import Projects from "./pages/Projects";
-
-//KANBAN IMPORTS
-import React, { useState, useEffect, useRef } from "react";
 import "./App.css";
-
-import Kanban from "./components/Kanban/Kanban";
-
-//Chat Feature
-
+import Kanban from "../src/components/Kanban/index"
 
 const httpLink = createHttpLink({
   uri: "/graphql",
