@@ -65,15 +65,15 @@ export const DELETE_PROJECT = gql`
 `;
 
 export const ADD_KHAN_BAN = gql`
-  mutation addKhanBan($projectId: ID!, $title: String!, $description: String!) {
-    addKhanBan(
+  mutation addKanban($projectId: ID!, $title: String!, $description: String!) {
+    addKanban(
       projectId: $projectId
       title: $title
       description: $description
     ) {
       title
       description
-      khanBan {
+      kanban {
         _id
         title
         description
@@ -83,15 +83,15 @@ export const ADD_KHAN_BAN = gql`
 `;
 
 export const UPDATE_KHAN_BAN_STATUS = gql`
-  mutation updateKhanBan($projectId: ID!, $khanBanId: ID!, $status: String!) {
-    updateKhanBanStatus(
+  mutation updateKanban($projectId: ID!, $kanbanId: ID!, $status: String!) {
+    updateKanbanStatus(
       projectId: $projectId
-      khanBanId: $khanBanId
+      kanbanId: $kanbanId
       status: $status
     ) {
       title
       description
-      khanBan {
+      kanban {
         _id
         title
         description
@@ -102,11 +102,11 @@ export const UPDATE_KHAN_BAN_STATUS = gql`
 `;
 
 export const DELETE_KHAN_BAN = gql`
-  mutation deleteKhanBan($projectId: ID!, $khanBanId: ID!) {
-    deleteKhanBan(projectId: $projectId, khanBanId: $khanBanId) {
+  mutation deleteKanban($projectId: ID!, $kanbanId: ID!) {
+    deleteKanban(projectId: $projectId, kanbanId: $kanbanId) {
       title
       description
-      khanBan {
+      kanban {
         _id
         title
         description
