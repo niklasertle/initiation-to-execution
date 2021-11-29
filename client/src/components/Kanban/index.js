@@ -3,10 +3,6 @@ import Board from "../Board/Board";
 import Editable from "../Editabled/Editable";
 // import "./App.css";
 
-
-
-
-
 function Kanban() {
     const [boards, setBoards] = useState(
       JSON.parse(localStorage.getItem("prac-kanban")) || []

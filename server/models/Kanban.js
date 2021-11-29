@@ -1,6 +1,6 @@
 const { Schema } = require("mongoose");
 
-const khanBanSchema = new Schema({
+const kanbanSchema = new Schema({
   title: {
     type: String,
   },
@@ -14,4 +14,4 @@ const khanBanSchema = new Schema({
   },
 });
 
-module.exports = khanBanSchema;
+module.exports = kanbanSchema;

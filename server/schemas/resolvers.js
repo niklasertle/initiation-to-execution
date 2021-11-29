@@ -24,7 +24,7 @@ const resolvers = {
       return await Project.findOne({ _id: projectId }).populate([
         "message",
         "calendar",
-        "khanBan",
+        "kanban",
         "users",
       ]);
     },
@@ -88,8 +88,8 @@ const resolvers = {
 
       return { message: "Project deleted successfully" };
     },
-    addKhanBan: async (parent, { projectId, title, description }, context) => {
-      const newKhanBan = {
+    addKanban: async (parent, { projectId, title, description }, context) => {
+      const newKanban = {
         title,
         description,
         userId: context.user._id,
@@ -97,25 +97,25 @@ const resolvers = {
 
       const updatedProject = await Project.findOneAndUpdate(
         { _id: projectId },
-        { $addToSet: { khanBan: newKhanBan } },
+        { $addToSet: { kanban: newKanban } },
         { new: true, runValidators: true }
       );
 
       return updatedProject;
     },
-    updateKhanBanStatus: async (parent, { projectId, khanBanId, status }) => {
+    updateKanbanStatus: async (parent, { projectId, kanbanId, status }) => {
       const updatedProject = await Project.findOneAndUpdate(
-        { _id: projectId, khanBan: { $elemMatch: { _id: khanBanId } } },
-        { $set: { "khanBan.$.status": status } },
+        { _id: projectId, kanban: { $elemMatch: { _id: kanbanId } } },
+        { $set: { "kanban.$.status": status } },
         { new: true, safe: true, upsert: true }
       );
 
       return updatedProject;
     },
-    deleteKhanBan: async (parent, { projectId, khanBanId }) => {
+    deleteKanban: async (parent, { projectId, kanbanId }) => {
       const updatedProject = await Project.findOneAndUpdate(
         { _id: projectId },
-        { $pull: { khanBan: { _id: khanBanId } } },
+        { $pull: { kanban: { _id: kanbanId } } },
         { new: true }
       );
 
