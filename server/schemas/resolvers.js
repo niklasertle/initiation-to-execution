@@ -78,7 +78,7 @@ const resolvers = {
       const updatedProject = await Project.findOneAndUpdate(
         { _id: projectId },
         { $addToSet: { users: userId } },
-        { new: true, runValidators: true }
+        { new: true, runValidators: true, returnOriginal: false }
       );
 
       return updatedProject;
