@@ -11,7 +11,7 @@ export const GET_ME = gql`
 `;
 
 export const GET_ALL_USERS = gql`
-  query getUsers {
+  query {
     users {
       _id
       username
@@ -21,7 +21,7 @@ export const GET_ALL_USERS = gql`
 
 export const GET_ALL_PROJECTS = gql`
   query projects($userId: ID!) {
-    projects(userId: $userId){
+    projects(userId: $userId) {
       _id
       title
       description
@@ -35,11 +35,8 @@ export const GET_PROJECT = gql`
       _id
       title
       description
-      users {
-        _id
-        username
-        email
-      }
+      startDate
+      endDate
       kanban {
         _id
         title
@@ -57,8 +54,10 @@ export const GET_PROJECT = gql`
         }
         createdAt
       }
-      startDate
-      endDate
+      users {
+        _id
+        username
+      }
     }
   }
 `;

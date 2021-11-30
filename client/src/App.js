@@ -43,11 +43,7 @@ function App() {
             <PrivateRoute exact path="*" />
           </Switch>
         </>
-
-        <></>
       </Router>
-
-      <div className="sections"></div>
     </ApolloProvider>
   );
 }
