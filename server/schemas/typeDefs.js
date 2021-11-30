@@ -51,6 +51,7 @@ const typeDefs = gql`
     addUser(username: String!, email: String!, password: String!): Auth
     createProject(title: String, description: String, startDate: String, endDate: String): Project
     addUserToProject(projectId: ID!, userId: ID!): Project
+    removeUserFromProject(projectId: ID!, userId: ID!): Project
     deleteProject(projectId: ID!): Project
     addKanban(projectId: ID!, title: String!, description: String!): Project
     updateKanbanStatus(projectId: ID!, kanbanId: ID!, status: String!): Project

@@ -83,6 +83,15 @@ const resolvers = {
 
       return updatedProject;
     },
+    removeUserFromProject: async (parent, { projectId, userId }) => {
+      const updatedProject = await Project.findOneAndUpdate(
+        { _id: projectId },
+        { $pull: { users:  userId }},
+        { new: true, runValidators: true }
+      );
+
+      return updatedProject;
+    },
     deleteProject: async (parent, { projectId }) => {
       await Project.remove({ _id: projectId });
 

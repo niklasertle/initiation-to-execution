@@ -12,18 +12,19 @@ function Board(props) {
 
   return (
     <div className="board">
+      
       <div className="board_header">
-        {/* <p className="board_header_title">
-          {props.board?.title} 
+        <p className="board_header_title">
+          {/* {props.board?.title} 
           <span>{props.board?.cards?.length || 0 }</span>
-          
-        </p> */}
+           */}
+        </p>
        
-        {/* <div
+        <div
           className="board_header_title_more"
           onClick={() => setShowDropdown(true)}
         >
-          <MoreHorizontal />
+          {/* <MoreHorizontal />
           {showDropdown && (
             <Dropdown
               class="board_dropdown"
@@ -31,15 +32,15 @@ function Board(props) {
             >
               <p onClick={() => props.removeBoard()}>Delete Board</p>
             </Dropdown>
-          )}
-        </div> */}
+          )} */}
+        </div>
       </div>
       
       <div className="board_cards custom-scroll">
         
-      <p className="board_header_title">
-        <div>Testing</div>
-          {/* {props.board?.title}  */}
+      <p className="board_header_title"> 
+       
+          {props.board?.title} 
           
           <span>{props.board?.cards?.length || 0 }</span>
           

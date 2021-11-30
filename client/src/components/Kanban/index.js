@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import Board from "../Board/Board";
 import Editable from "../Editabled/Editable";
+import ChatTime from "../ChatRoom";
+import {Grid} from '@material-ui/core';
 
 function Kanban() {
   const [boards, setBoards] = useState(
@@ -118,14 +120,17 @@ function Kanban() {
   }, [boards]);
 
   return (
-    <div className="app">
+   
+      <Grid container>
+        <Grid item xs={9}>
+        <div className="app">
       <div className="app_nav">
         <h1>Kanban Board</h1>
         <input type="text" placeholder="project title" />
       </div>
       <div className="app_boards_container">
         <div className="app_boards">
-          
+        {/* <ChatTime /> */}
           {boards.map((item) => (
             <Board
               key={item.id}
@@ -150,7 +155,14 @@ function Kanban() {
           </div> */}
         </div>
       </div>
-    </div>
+      </div>
+        </Grid>
+        <Grid item xs={3}>
+          <ChatTime />
+        </Grid>
+      </Grid>
+    
+    
   );
 }
 

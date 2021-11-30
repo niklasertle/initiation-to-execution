@@ -46,10 +46,19 @@ export const CREATE_PROJECT = gql`
 export const ADD_USER_TO_PROJECT = gql`
   mutation addUserToProject($projectId: ID!, $userId: ID!) {
     addUserToProject(projectId: $projectId, userId: $userId) {
-      _id
-      title
-      description
       users {
+        _id
+        username
+      }
+    }
+  }
+`;
+
+export const REMOVE_USER_FROM_PROJECT = gql`
+  mutation removeUserFromProject($projectId: ID!, $userId: ID!) {
+    removeUserFromProject(projectId: $projectId, userId: $userId) {
+      users {
+        _id
         username
       }
     }
@@ -66,11 +75,7 @@ export const DELETE_PROJECT = gql`
 
 export const ADD_KHAN_BAN = gql`
   mutation addKanban($projectId: ID!, $title: String!, $description: String!) {
-    addKanban(
-      projectId: $projectId
-      title: $title
-      description: $description
-    ) {
+    addKanban(projectId: $projectId, title: $title, description: $description) {
       title
       description
       kanban {

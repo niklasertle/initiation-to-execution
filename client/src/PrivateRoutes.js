@@ -10,7 +10,7 @@ export default function PrivateRoute() {
     return (
       <>
         <Route exact path="/" component={Profile}/>
-        <Route exact path="/project/:id" component={Projects}/>
+        <Route exact path="/project/:projectId" component={Projects}/>
       </>
     );
   } else {

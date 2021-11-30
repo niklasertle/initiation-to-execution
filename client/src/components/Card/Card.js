@@ -39,6 +39,7 @@ function Card(props) {
 
   return (
     <>
+   
       {showModal && (
         <CardInfo
           onClose={() => setShowModal(false)}
@@ -46,6 +47,7 @@ function Card(props) {
           boardId={props.boardId}
           updateCard={props.updateCard}
         />
+       
       )}
       <div
         className="card"
@@ -53,7 +55,9 @@ function Card(props) {
         onDragEnd={() => props.dragEnded(props.boardId, id)}
         onDragEnter={() => props.dragEntered(props.boardId, id)}
         onClick={() => setShowModal(true)}
+      
       >
+        
         <div className="card_top">
           <div className="card_top_labels">
             {labels?.map((item, index) => (
@@ -69,6 +73,7 @@ function Card(props) {
               setShowDropdown(true);
             }}
           >
+            
             <MoreHorizontal />
             {showDropdown && (
               <Dropdown
