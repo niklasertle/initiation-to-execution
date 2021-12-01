@@ -1,7 +1,6 @@
 const { Schema, model } = require("mongoose");
 
 const kanbanSchema = require("./Kanban");
-const messageSchema = require("./Message");
 
 const projectSchema = new Schema({
   title: {
@@ -14,7 +13,6 @@ const projectSchema = new Schema({
   },
   users: [{ type: Schema.Types.ObjectId, ref: "User" }],
   kanban: [kanbanSchema],
-  messages: [messageSchema],
   startDate: {
     type: String,
     default: Date.now()

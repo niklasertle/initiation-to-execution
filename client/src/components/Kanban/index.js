@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import Board from "../Board/Board";
 import Editable from "../Editabled/Editable";
-import ChatTime from "../ChatRoom";
 import {Grid} from '@material-ui/core';
 
 function Kanban({ kanban }) {
@@ -157,9 +156,6 @@ function Kanban({ kanban }) {
         </div>
       </div>
       </div>
-        </Grid>
-        <Grid item xs={3}>
-          <ChatTime />
         </Grid>
       </Grid>
     

@@ -3,7 +3,6 @@ import ProjectNavbar from "../components/ProjectNavbar";
 import { useParams } from "react-router-dom";
 
 import Kanban from "../components/Kanban";
-import Messages from "../components/Messages";
 import Settings from "../components/Settings";
 import ChatRoom from '../components/ChatRoom';
 
