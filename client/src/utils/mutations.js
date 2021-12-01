@@ -120,16 +120,3 @@ export const DELETE_KHAN_BAN = gql`
     }
   }
 `;
-
-export const ADD_MESSAGE = gql`
-  mutation addMessage($projectId: ID!, $message: String!) {
-    addMessage(projectId: $projectId, message: $message) {
-      _id
-      title
-      description
-      messages {
-        message
-      }
-    }
-  }
-`;

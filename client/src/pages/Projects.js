@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import Kanban from "../components/Kanban";
 import Messages from "../components/Messages";
 import Settings from "../components/Settings";
+import ChatRoom from '../components/ChatRoom';
 
 import { useQuery } from "@apollo/client";
 
@@ -35,8 +36,8 @@ export default function Projects() {
     if (currentPage === "Kanban") {
       return <Kanban kanban={projectData.kanban} projectId={projectId}/>;
     }
-    if (currentPage === "Messages") {
-      return <Messages messages={projectData.messages} projectId={projectId}/>;
+    if (currentPage === "Chat") {
+      return <ChatRoom />;
     }
     if (currentPage === "Settings") {
       return <Settings users={projectData.users} projectId={projectId}/>;

@@ -9,29 +9,21 @@ const typeDefs = gql`
   }
 
   type Project {
-      _id: ID
-      title: String
-      description: String
-      users: [User]
-      kanban: [Kanban]
-      messages: [Message]
-      startDate: String
-      endDate: String
+    _id: ID
+    title: String
+    description: String
+    users: [User]
+    kanban: [Kanban]
+    startDate: String
+    endDate: String
   }
 
   type Kanban {
-      _id: ID
-      title: String
-      description: String
-      userId: User
-      status: String
-  }
-
-  type Message {
     _id: ID
-    message: String
+    title: String
+    description: String
     userId: User
-    createdAt: String
+    status: String
   }
 
   type Auth {
@@ -49,14 +41,18 @@ const typeDefs = gql`
   type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
-    createProject(title: String, description: String, startDate: String, endDate: String): Project
+    createProject(
+      title: String
+      description: String
+      startDate: String
+      endDate: String
+    ): Project
     addUserToProject(projectId: ID!, userId: ID!): Project
     removeUserFromProject(projectId: ID!, userId: ID!): Project
     deleteProject(projectId: ID!): Project
     addKanban(projectId: ID!, title: String!, description: String!): Project
     updateKanbanStatus(projectId: ID!, kanbanId: ID!, status: String!): Project
     deleteKanban(projectId: ID!, kanbanId: ID!): Project
-    addMessage(projectId: ID!, message: String!): Project
   }
 `;
 
