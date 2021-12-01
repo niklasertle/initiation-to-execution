@@ -31,7 +31,6 @@ function Kanban({ kanban }) {
     const index = boards.findIndex((item) => item.id === id);
     if (index < 0) return;
 
-    
     const tempBoards = [...boards];
     tempBoards[index].cards.push({
       id: Date.now() + Math.random() * 2,
@@ -148,8 +147,7 @@ function Kanban({ kanban }) {
           </div> */}
         </div>
       </div>
-      </div>
-      
+    </div>
   );
 }
 
