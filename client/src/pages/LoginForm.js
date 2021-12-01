@@ -11,7 +11,13 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Paper from "@mui/material/Paper";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useMutation } from "@apollo/client";
+import Image from "../../../client/src/images/landing_pg.png"
 
+// const styles = {
+//     paperContainer: {
+//         backgroundImage: `url(${Image})`
+//     }
+// };
 
 import { LOGIN_USER } from "../utils/mutations";
 import Auth from "../utils/auth";
@@ -52,6 +58,7 @@ export default function LoginForm() {
           md={7}
           sx={{
             backgroundImage: "url(https://source.unsplash.com/random)",
+            
             backgroundRepeat: "no-repeat",
             backgroundColor: (t) =>
               t.palette.mode === "light"

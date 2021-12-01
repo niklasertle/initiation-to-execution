@@ -120,30 +120,29 @@ function Kanban({ kanban }) {
   }, [boards]);
 
   return (
-   
-      <Grid container>
-        <Grid item xs={9}>
+    <Grid container>
+      <Grid item xs={9}>
         <div className="app">
-      <div className="app_nav">
-        <h1>Kanban Board</h1>
-        <input type="text" placeholder="project title" />
-      </div>
-      <div className="app_boards_container">
-        <div className="app_boards">
-        {/* <ChatTime /> */}
-          {boards.map((item) => (
-            <Board
-              key={item.id}
-              board={item}
-              addCard={addCardHandler}
-              // removeBoard={() => removeBoard(item.id)}
-              removeCard={removeCard}
-              dragEnded={dragEnded}
-              dragEntered={dragEntered}
-              updateCard={updateCard}
-            />
-          ))}
-          {/* <div className="app_boards_last">
+          <div className="app_nav">
+            <h1>Kanban Board</h1>
+            <input type="text" placeholder="project title" />
+          </div>
+          <div className="app_boards_container">
+            <div className="app_boards">
+              {/* <ChatTime /> */}
+              {boards.map((item) => (
+                <Board
+                  key={item.id}
+                  board={item}
+                  addCard={addCardHandler}
+                  // removeBoard={() => removeBoard(item.id)}
+                  removeCard={removeCard}
+                  dragEnded={dragEnded}
+                  dragEntered={dragEntered}
+                  updateCard={updateCard}
+                />
+              ))}
+              {/* <div className="app_boards_last">
             <Editable
               displayClass="app_boards_add-board"
               editClass="app_boards_add-board_edit"
@@ -153,13 +152,16 @@ function Kanban({ kanban }) {
               onSubmit={addboardHandler}
             />
           </div> */}
+            </div>
+          </div>
         </div>
       </div>
       </div>
         </Grid>
+
       </Grid>
-    
-    
+      
+    </Grid>
   );
 }
 
