@@ -78,17 +78,17 @@ const resolvers = {
       const updatedProject = await Project.findOneAndUpdate(
         { _id: projectId },
         { $addToSet: { users: userId } },
-        { new: true, runValidators: true, returnOriginal: false }
-      );
+        { new: true, runValidators: true }
+      ).populate("users");
 
       return updatedProject;
     },
     removeUserFromProject: async (parent, { projectId, userId }) => {
       const updatedProject = await Project.findOneAndUpdate(
         { _id: projectId },
-        { $pull: { users:  userId }},
+        { $pull: { users: userId } },
         { new: true, runValidators: true }
-      );
+      ).populate("users");
 
       return updatedProject;
     },
