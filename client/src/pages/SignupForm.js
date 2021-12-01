@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
@@ -19,6 +19,7 @@ const theme = createTheme();
 
 export default function SignupForm() {
   const [addUser] = useMutation(ADD_USER);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -35,6 +36,7 @@ export default function SignupForm() {
       Auth.login(data.addUser.token);
     } catch (error) {
       console.error(error);
+      setErrorMessage("Please enter a valid username, email, or password")
     }
   };
 
@@ -125,6 +127,11 @@ export default function SignupForm() {
                   </Link>
                 </Grid>
               </Grid>
+              {errorMessage && (
+              <div className="m-4 text-danger">
+                <h4>{errorMessage}</h4>
+              </div>
+            )}
             </Box>
           </Box>
         </Grid>

@@ -16,6 +16,7 @@ import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
 
 export default function Profile() {
+  const [errorMessage, setErrorMessage] = useState("");
   // useState to watch if the modal should be open
   const [open, setOpen] = useState(false);
   // useState for date forms
@@ -58,6 +59,7 @@ export default function Profile() {
       window.location.replace(`/project/${data.createProject._id}`);
     } catch (error) {
       console.error(error);
+      setErrorMessage('Please enter all required fields');
     }
   };
 
@@ -135,6 +137,11 @@ export default function Profile() {
                   Create Project
                 </Button>
               </Box>
+              {errorMessage && (
+                <div className="m-4 text-danger">
+                  <h4>{errorMessage}</h4>
+                </div>
+              )}
             </Box>
           </div>
         </Modal>
