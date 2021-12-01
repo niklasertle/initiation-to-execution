@@ -1,9 +1,11 @@
 import React, { useRef, useState } from 'react';
+// import './App.css';
+import "./Chat.css"
 
-import firebase from 'firebase/app';
-import 'firebase/firestore';
-import 'firebase/auth';
-import 'firebase/analytics';
+// v9 compat packages are API compatible with v8 code
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
+import 'firebase/compat/firestore';
 
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
@@ -20,10 +22,10 @@ firebase.initializeApp({
 
 const auth = firebase.auth();
 const firestore = firebase.firestore();
-const analytics = firebase.analytics();
+// const analytics = firebase.analytics();
 
 
-function Chat() {
+function ChatTime() {
 
   const [user] = useAuthState(auth);
 
@@ -68,7 +70,7 @@ function SignOut() {
 function ChatRoom() {
   const dummy = useRef();
   const messagesRef = firestore.collection('messages');
-  const query = messagesRef.orderBy('createdAt').limit(25);
+  const query = messagesRef.orderBy('createdAt').limitToLast(25);
 
   const [messages] = useCollectionData(query, { idField: 'id' });
 
@@ -92,7 +94,7 @@ function ChatRoom() {
   }
 
   return (<>
-    <main>
+    <main >
 
       {messages && messages.map(msg => <ChatMessage key={msg.id} message={msg} />)}
 
@@ -125,4 +127,4 @@ function ChatMessage(props) {
 }
 
 
-export default Chat;
+export default ChatTime;
