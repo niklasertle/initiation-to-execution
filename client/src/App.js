@@ -11,8 +11,11 @@ import LoginForm from "./pages/LoginForm";
 import SignupForm from "./pages/SignupForm";
 import PrivateRoute from "./PrivateRoutes";
 import "./App.css";
+<<<<<<< HEAD
 import Kanban from "../src/components/Kanban/index";
 import ChatTime from "../src/components/ChatRoom/index";
+=======
+>>>>>>> 8926c6d09ffd2aabf419e4c1a45654b84b747c78
 
 const httpLink = createHttpLink({
   uri: "/graphql",
@@ -46,10 +49,6 @@ function App() {
           </Switch>
         </>
       </Router>
-
-      <div className="sections">
-        <Kanban />
-      </div>
     </ApolloProvider>
   );
 }

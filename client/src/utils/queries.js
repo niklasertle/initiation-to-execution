@@ -46,14 +46,6 @@ export const GET_PROJECT = gql`
         }
         status
       }
-      messages {
-        _id
-        message
-        userId {
-          username
-        }
-        createdAt
-      }
       users {
         _id
         username

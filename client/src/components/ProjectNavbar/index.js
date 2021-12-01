@@ -9,7 +9,7 @@ export default function ProjectNavbar({ setCurrentPage }) {
         <Link to="/" style={{ textDecoration: 'none', color: 'white' }}>Home</Link>
       </Button>
       <Button onClick={() => setCurrentPage("Kanban")}>Kanban</Button>
-      <Button onClick={() => setCurrentPage("Messages")}>Messages</Button>
+      <Button onClick={() => setCurrentPage("Chat")}>Chat</Button>
       <Button onClick={() => setCurrentPage("Settings")}>Settings</Button>
     </div>
   );

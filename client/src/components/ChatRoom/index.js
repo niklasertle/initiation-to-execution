@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 // import './App.css';
-// import "./Chat.css";
+// import "./Chat.css"
 
 // v9 compat packages are API compatible with v8 code
 import firebase from "firebase/compat/app";

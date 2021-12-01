@@ -22,10 +22,7 @@ const resolvers = {
     project: async (parent, { projectId }) => {
       // Return everything in each array
       return await Project.findOne({ _id: projectId }).populate([
-        "message",
-        "calendar",
-        "kanban",
-        "users",
+        "users"
       ]);
     },
   },
@@ -79,16 +76,16 @@ const resolvers = {
         { _id: projectId },
         { $addToSet: { users: userId } },
         { new: true, runValidators: true }
-      );
+      ).populate("users");
 
       return updatedProject;
     },
     removeUserFromProject: async (parent, { projectId, userId }) => {
       const updatedProject = await Project.findOneAndUpdate(
         { _id: projectId },
-        { $pull: { users:  userId }},
+        { $pull: { users: userId } },
         { new: true, runValidators: true }
-      );
+      ).populate("users");
 
       return updatedProject;
     },
@@ -126,20 +123,6 @@ const resolvers = {
         { _id: projectId },
         { $pull: { kanban: { _id: kanbanId } } },
         { new: true }
-      );
-
-      return updatedProject;
-    },
-    addMessage: async (parent, { projectId, message }, context) => {
-      const newMessage = {
-        message,
-        userId: context.user._id,
-      };
-
-      const updatedProject = await Project.findOneAndUpdate(
-        { _id: projectId },
-        { $addToSet: { calendar: newMessage } },
-        { new: true, runValidators: true }
       );
 
       return updatedProject;

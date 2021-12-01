@@ -4,7 +4,8 @@ import Editable from "../Editabled/Editable";
 import ChatTime from "../ChatRoom";
 import { Grid } from "@material-ui/core";
 
-function Kanban() {
+function Kanban({ kanban }) {
+  console.log(kanban);
   const [boards, setBoards] = useState(
     JSON.parse(localStorage.getItem("prac-kanban")) || []
   );
