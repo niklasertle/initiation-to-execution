@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
@@ -13,11 +13,6 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useMutation } from "@apollo/client";
 import Image from "../../../client/src/images/landing_pg.png"
 
-// const styles = {
-//     paperContainer: {
-//         backgroundImage: `url(${Image})`
-//     }
-// };
 
 import { LOGIN_USER } from "../utils/mutations";
 import Auth from "../utils/auth";
@@ -26,6 +21,7 @@ const theme = createTheme();
 
 export default function LoginForm() {
   const [loginUser] = useMutation(LOGIN_USER);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -36,13 +32,12 @@ export default function LoginForm() {
       password: data.get("password"),
     };
 
-    console.log(userData);
-
     try {
       const { data } = await loginUser({ variables: { ...userData } });
       Auth.login(data.login.token);
     } catch (error) {
       console.error(error);
+      setErrorMessage("Please enter a valid email or password");
     }
   };
 
@@ -50,7 +45,7 @@ export default function LoginForm() {
     <ThemeProvider theme={theme}>
       <Grid container component="main" sx={{ height: "100vh" }}>
         <CssBaseline />
-       
+
         <Grid
           item
           xs={false}
@@ -125,6 +120,11 @@ export default function LoginForm() {
                   </Link>
                 </Grid>
               </Grid>
+              {errorMessage && (
+                <div className="m-4 text-danger">
+                  <h4>{errorMessage}</h4>
+                </div>
+              )}
             </Box>
           </Box>
         </Grid>
