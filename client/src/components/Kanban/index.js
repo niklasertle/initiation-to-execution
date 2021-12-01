@@ -150,6 +150,7 @@ function Kanban({ kanban }) {
           </div>
         </div>
       </div>
+  </Grid
       </div>
         </Grid>
 
