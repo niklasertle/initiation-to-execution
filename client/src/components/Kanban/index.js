@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import Board from "../Board/Board";
-import Editable from "../Editabled/Editable";
 import { Grid } from "@material-ui/core";
 
 function Kanban({ kanban }) {
@@ -23,31 +22,10 @@ function Kanban({ kanban }) {
     },
   ]);
 
-
-
   const [targetCard, setTargetCard] = useState({
     bid: "",
     cid: "",
   });
-
-  const addboardHandler = (name) => {
-    const tempBoards = [...boards];
-    tempBoards.push({
-      id: Date.now() + Math.random() * 2,
-      title: name,
-      cards: [],
-    });
-    setBoards(tempBoards);
-  };
-
-  // const removeBoard = (id) => {
-  //   const index = boards.findIndex((item) => item.id === id);
-  //   if (index < 0) return;
-
-  //   const tempBoards = [...boards];
-  //   tempBoards.splice(index, 1);
-  //   setBoards(tempBoards);
-  // };
 
   const addCardHandler = (id, title) => {
     const index = boards.findIndex((item) => item.id === id);
@@ -170,7 +148,8 @@ function Kanban({ kanban }) {
           </div> */}
         </div>
       </div>
-    </div>
+      </div>
+      
   );
 }
 

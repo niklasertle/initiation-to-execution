@@ -40,7 +40,8 @@ function App() {
           <Switch>
             <Route exact path="/login" component={LoginForm} />
             <Route exact path="/signup" component={SignupForm} />
-            <PrivateRoute exact path="*" />
+            <PrivateRoute exact path="/" />
+            <Route exact path="*" component={PrivateRoute} />
           </Switch>
         </>
       </Router>

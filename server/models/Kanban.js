@@ -10,7 +10,7 @@ const kanbanSchema = new Schema({
   userId: { type: Schema.Types.ObjectId, ref: "User" },
   status: {
     type: String,
-    default: 'To-Do'
+    default: 'todo'
   },
 });
 
