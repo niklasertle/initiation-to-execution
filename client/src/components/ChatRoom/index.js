@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 // import './App.css';
-// import "./Chat.css"
+import "./Chat.css"
 
 // v9 compat packages are API compatible with v8 code
 import firebase from "firebase/compat/app";
@@ -27,7 +27,7 @@ function ChatTime() {
   const [user] = useAuthState(auth);
 
   return (
-    <div className="App">
+    <div className="ChatBox">
       <header>
         <h1>⚛️🔥💬</h1>
         <SignOut />
@@ -93,14 +93,14 @@ function ChatRoom() {
 
   return (
     <>
-      <main>
+      <main className="ChatRoom">
         {messages &&
           messages.map((msg) => <ChatMessage key={msg.id} message={msg} />)}
 
         <span ref={dummy}></span>
       </main>
 
-      <form onSubmit={sendMessage}>
+      <form className="ChatForm" onSubmit={sendMessage}>
         <input
           value={formValue}
           onChange={(e) => setFormValue(e.target.value)}

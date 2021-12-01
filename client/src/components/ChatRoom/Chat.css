@@ -1,20 +1,19 @@
-body {
+/* body {
     background-color: #282c34;
   }
-  
-  .App {
+   */
+  .ChatBox {
     text-align: center;
     max-width: 728px;
     margin: 0 auto;
   
   }
   
-  .App header {
+  .ChatBox header {
     background-color: #181717;
     height: 10vh;
     min-height: 50px;
     color: white;
-    position: fixed;
     width: 100%;
     max-width: 728px;
     top: 0;
@@ -26,15 +25,16 @@ body {
     box-sizing: border-box;
   }
   
-  .App section {
-    display: flex;
+  .ChatBox section {
+    /* display: flex; */
     flex-direction: column;
     justify-content: center;
-    min-height: 100vh;
+    min-height: 62vh;
     background-color: rgb(40, 37, 53);
+    margin-bottom: 10%;
   }
   
-  main {
+  ChatRoom {
     padding: 10px;
     height: 80vh;
     margin: 10vh 0 10vh;
@@ -43,19 +43,19 @@ body {
     flex-direction: column;
   }
   
-  main::-webkit-scrollbar {
+  ChatRoom::-webkit-scrollbar {
     width: 0.25rem;
   }
   
-  main::-webkit-scrollbar-track {
+  ChatRoom::-webkit-scrollbar-track {
     background: #1e1e24;
   }
   
-  main::-webkit-scrollbar-thumb {
+  ChatRoom::-webkit-scrollbar-thumb {
     background: #6649b8;
   }
   
-  form {
+  .ChatForm {
     height: 10vh;
     position: fixed;
     bottom: 0;
@@ -66,7 +66,7 @@ body {
     font-size: 1.5rem;
   }
   
-  form button {
+  .ChatForm button {
     width: 20%;
     background-color: rgb(56, 56, 143);
   }
