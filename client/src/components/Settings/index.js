@@ -41,6 +41,7 @@ export default function Settings({ users, projectId }) {
         variables: { projectId, userId: newUser.id },
       });
       console.log(data);
+      setProjectUsers(data.addUserToProject.users)
       setNewUser({ label: "", id: "" });
     } catch (err) {
       console.log(error);
@@ -54,6 +55,7 @@ export default function Settings({ users, projectId }) {
       });
 
       console.log(data);
+      setProjectUsers(data.removeUserFromProject.users)
     } catch (err) {
       console.log(error);
     }
