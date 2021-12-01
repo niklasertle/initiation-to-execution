@@ -11,7 +11,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Paper from "@mui/material/Paper";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useMutation } from "@apollo/client";
-import Image from "../../../client/src/images/landing_pg.png"
+
 
 // const styles = {
 //     paperContainer: {
