@@ -30,7 +30,7 @@ export default function ProjectCard({ userId }) {
 
   return (
     <>
-      <h1> Your Projects</h1>
+      <h1 className="projects"> Your Projects</h1>
 
       <Stack
         direction={{ xs: "column", sm: "row" }}
@@ -41,9 +41,9 @@ export default function ProjectCard({ userId }) {
       >
         {projectData.map((project) => {
           return (
-            <Item key={project._id}>
+            <Item className="projectCards" key={project._id}>
               <Link to={() => `/project/${project._id}`}>
-                <h2>{project.title}</h2>
+                <h2 className="projectTitle">{project.title}</h2>
               </Link>
               <p>{project.description}</p>
             </Item>

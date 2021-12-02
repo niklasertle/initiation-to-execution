@@ -80,3 +80,46 @@
     overflow-x: auto;
     padding: 20px;
   }
+
+  .userName {
+    background-color: rgb(70, 169, 226);
+    text-align:left;
+    padding-top: 2%;
+    padding-left: 2%;
+    font-size: 8vh;
+    font-family: 'Anton', sans-serif;
+    color: white;
+    }
+
+    .projects {
+      color: rgb(70, 169, 226);
+      padding-left: 2%;
+      font-size: 6vh;
+    font-family: 'Anton', sans-serif;
+    text-align: center;
+    }
+
+    .greeting {
+   color: rgba(38, 60, 73, 0.699);
+     text-align: left;
+    }
+
+
+    .projectCards{
+      box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s bezier(.25,.8,.25,1);
+    }
+
+
+   .projectCards:hover {
+             box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+        cursor: pointer;
+        background-color: rgb(70, 169, 226);
+        color:white;
+      }
+
+      .projectTitle {
+        color: rgba(38, 60, 73, 0.699);
+        text-align: center;
+        align-items: center;
+      }
