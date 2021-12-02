@@ -71,7 +71,7 @@ export default function Profile() {
   return (
     <>
       <>
-        <h1>{userData.username}</h1>
+        <h1 className="userName">{userData.username}<p className="greeting">.....visualize what you can do.</p></h1>
 
         <Button onClick={handleOpen}>Create Project</Button>
         <Modal

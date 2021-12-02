@@ -5,7 +5,7 @@ import "./Modal.css";
 function Modal(props) {
   return (
     <div
-      className="modal"
+      className="modal "
       onClick={() => (props.onClose ? props.onClose() : "")}
     >
       <div
