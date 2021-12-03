@@ -22,8 +22,6 @@ export default function Projects() {
   });
   const projectData = data?.project || [];
 
-  // console.log(projectData);
-
   // If the user data hasn't been returned yet return loading
   if (loading) {
     return <h2>LOADING...</h2>;

@@ -1,54 +1,24 @@
-import React, { useState } from "react";
-import { MoreHorizontal } from "react-feather";
-
+import React from "react";
 import Card from "../Card/Card";
-import Dropdown from "../Dropdown/Dropdown";
-import Editable from "../Editabled/Editable";
-
 import "./Board.css";
 
 function Board(props) {
-  const [showDropdown, setShowDropdown] = useState(false);
-
   return (
     <div className="board">
-      
       <div className="board_header">
-        <p className="board_header_title">
-          {/* {props.board?.title} 
-          <span>{props.board?.cards?.length || 0 }</span>
-           */}
-        </p>
-       
-        <div
-          className="board_header_title_more"
-          onClick={() => setShowDropdown(true)}
-        >
-          {/* <MoreHorizontal />
-          {showDropdown && (
-            <Dropdown
-              class="board_dropdown"
-              onClose={() => setShowDropdown(false)}
-            >
-              <p onClick={() => props.removeBoard()}>Delete Board</p>
-            </Dropdown>
-          )} */}
-        </div>
+        <div className="board_header_title_more"></div>
       </div>
-      
+
       <div className="board_cards custom-scroll">
-        
-      <p className="board_header_title"> 
-       
-          {props.board?.title} 
-          
-          <span>{props.board?.cards?.length || 0 }</span>
-          
+        <p className="board_header_title">
+          {props.board?.title}
+
+          <span>{props.board?.cards?.length || 0}</span>
         </p>
-        
+
         {props.board?.cards?.map((item) => (
           <Card
-            key={item.id}
+            key={item._id}
             card={item}
             boardId={props.board.id}
             removeCard={props.removeCard}
@@ -57,13 +27,6 @@ function Board(props) {
             updateCard={props.updateCard}
           />
         ))}
-        <Editable
-          text="+ Add Card"
-          placeholder="Enter Card Title"
-          displayClass="board_add-card"
-          editClass="board_add-card_edit"
-          onSubmit={(value) => props.addCard(props.board?.id, value)}
-        />
       </div>
     </div>
   );

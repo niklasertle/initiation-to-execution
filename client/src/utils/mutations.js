@@ -73,15 +73,13 @@ export const DELETE_PROJECT = gql`
   }
 `;
 
-export const ADD_KHAN_BAN = gql`
-  mutation addKanban($projectId: ID!, $title: String!, $description: String!) {
-    addKanban(projectId: $projectId, title: $title, description: $description) {
-      title
-      description
+export const ADD_KANBAN = gql`
+  mutation addKanbanCard($projectId: ID!, $title: String!, $status: String!) {
+    addKanban(projectId: $projectId, title: $title, status: $status) {
       kanban {
         _id
         title
-        description
+        status
       }
     }
   }
@@ -99,22 +97,19 @@ export const UPDATE_KHAN_BAN_STATUS = gql`
       kanban {
         _id
         title
-        description
+        userId
         status
       }
     }
   }
 `;
 
-export const DELETE_KHAN_BAN = gql`
-  mutation deleteKanban($projectId: ID!, $kanbanId: ID!) {
+export const DELETE_KANBAN = gql`
+  mutation removeKanbanCard($projectId: ID!, $kanbanId: ID!) {
     deleteKanban(projectId: $projectId, kanbanId: $kanbanId) {
-      title
-      description
       kanban {
         _id
         title
-        description
         status
       }
     }

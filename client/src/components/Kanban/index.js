@@ -1,10 +1,17 @@
 import React, { useState, useEffect } from "react";
 import Board from "../Board/Board";
 import { Grid } from "@material-ui/core";
+import { useMutation, useQuery } from "@apollo/client";
+import Editable from "../Editabled/Editable";
 
-function Kanban({ kanban }) {
-  console.log(kanban);
-  const [boards, setBoards] = useState([
+import {
+  ADD_KANBAN,
+  UPDATE_KHAN_BAN_STATUS,
+  DELETE_KANBAN,
+} from "../../utils/mutations";
+
+function loadKanban(kanban) {
+  const boards = [
     {
       id: "todo",
       title: "To-Do",
@@ -20,40 +27,68 @@ function Kanban({ kanban }) {
       title: "Done",
       cards: [],
     },
-  ]);
+  ];
+
+  kanban.forEach((element) => {
+    if (element.status === "todo") {
+      boards[0].cards.push(element);
+    } else if (element.status === "inprogress") {
+      boards[1].cards.push(element);
+    } else if (element.status === "done") {
+      boards[2].cards.push(element);
+    }
+  });
+
+  if (boards[1].cards.length === 0) {
+    boards[1].cards.push({
+      id: "temp1",
+      title: "Drag a card here to see it function",
+      status: "inprogress",
+    });
+  }
+
+  if (boards[2].cards.length === 0) {
+    boards[2].cards.push({
+      id: "temp2",
+      title: "Drag a card here to see it function",
+      status: "done",
+    });
+  }
+
+  return boards;
+}
+
+function Kanban({ kanban, projectId }) {
+  const [boards, setBoards] = useState(loadKanban(kanban));
+
+  const [addCard] = useMutation(ADD_KANBAN);
+  const [deleteCard] = useMutation(DELETE_KANBAN);
 
   const [targetCard, setTargetCard] = useState({
     bid: "",
     cid: "",
   });
 
-  const addCardHandler = (id, title) => {
-    const index = boards.findIndex((item) => item.id === id);
-    if (index < 0) return;
-
-    const tempBoards = [...boards];
-    tempBoards[index].cards.push({
-      id: Date.now() + Math.random() * 2,
-      title,
-      labels: [],
-      date: "",
-      tasks: [],
-    });
-    setBoards(tempBoards);
+  const addCardHandler = async (title) => {
+    try {
+      const { data } = await addCard({
+        variables: { projectId, title, status: "todo" },
+      });
+      setBoards(loadKanban(data.addKanban.kanban));
+    } catch (error) {
+      console.error(error);
+    }
   };
 
-  const removeCard = (bid, cid) => {
-    const index = boards.findIndex((item) => item.id === bid);
-    if (index < 0) return;
-
-    const tempBoards = [...boards];
-    const cards = tempBoards[index].cards;
-
-    const cardIndex = cards.findIndex((item) => item.id === cid);
-    if (cardIndex < 0) return;
-
-    cards.splice(cardIndex, 1);
-    setBoards(tempBoards);
+  const removeCard = async (cardId) => {
+    try {
+      const { data } = await deleteCard({
+        variables: { projectId, kanbanId: cardId },
+      });
+      setBoards(loadKanban(data.deleteKanban.kanban));
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const dragEnded = (bid, cid) => {
@@ -119,32 +154,27 @@ function Kanban({ kanban }) {
         <h1>Kanban Board</h1>
       </div>
       <div className="app_boards_container">
+        <div>
+          <Editable
+            text="+ Add Card"
+            placeholder="Enter Card Title"
+            displayClass="board_add-card"
+            editClass="board_add-card_edit"
+            onSubmit={(value) => addCardHandler(value)}
+          />
+        </div>
         <div className="app_boards">
           {boards.map((item) => (
             <Board
               key={item.id}
               board={item}
               addCard={addCardHandler}
-              // removeBoard={() => removeBoard(item.id)}
               removeCard={removeCard}
               dragEnded={dragEnded}
               dragEntered={dragEntered}
               updateCard={updateCard}
             />
           ))}
-          {/* <div className="app_boards_last">
-            <Editable
-              displayClass="app_boards_add-board"
-              editClass="app_boards_add-board_edit"
-              placeholder="Enter Board Name"
-              text="Add Board"
-              buttonText="Add Board"
-              onSubmit={addboardHandler}
-
-
-
-            />
-          </div> */}
         </div>
       </div>
     </div>
