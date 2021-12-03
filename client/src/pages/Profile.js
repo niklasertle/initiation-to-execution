@@ -6,6 +6,7 @@ import TextField from "@mui/material/TextField";
 import DatePicker from "@mui/lab/DatePicker";
 import { useMutation, useQuery } from "@apollo/client";
 import ProjectCard from "../components/ProjectCard";
+import ResponsiveAppBar from "../components/ProjectNavbar";
 
 import Auth from "../utils/auth";
 
@@ -72,6 +73,7 @@ export default function Profile() {
   return (
     <>
       <>
+     
         <h1 className="userName">
           {userData.username}
           <p className="greeting">.....visualize what you can do.</p>
@@ -178,6 +180,8 @@ export default function Profile() {
         </Button>
       </>
       <ProjectCard userId={userData._id} />
+     
+
     </>
   );
 }
