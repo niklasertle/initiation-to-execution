@@ -17,7 +17,7 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 export default function ProjectCard({ userId }) {
-    // Get all the project data for the user
+  // Get all the project data for the user
   const { loading, data } = useQuery(GET_ALL_PROJECTS, {
     variables: { userId: userId },
   });
@@ -45,7 +45,7 @@ export default function ProjectCard({ userId }) {
               <Link to={() => `/project/${project._id}`}>
                 <h2 className="projectTitle">{project.title}</h2>
               </Link>
-              <p>{project.description}</p>
+              <p className="description">{project.description}</p>
             </Item>
           );
         })}

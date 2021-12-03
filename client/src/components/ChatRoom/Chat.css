@@ -116,7 +116,7 @@
     list-style: none;
   }
   
-  p {
+  .chatText {
     max-width: 500px;
     margin-bottom: 12px;
     line-height: 24px;

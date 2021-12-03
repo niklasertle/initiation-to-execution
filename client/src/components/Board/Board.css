@@ -20,11 +20,11 @@
   display: flex;
   gap: 5px;
   align-items: center;
-  color: #FAFAFA;
+  color: #343a40;
 }
 
 .board_header_title span {
-  color: #FAFAFA;
+  color: #343a40;
   font-size: 12px;
   font-weight: 500;
   
@@ -47,7 +47,7 @@
 }
 
 .board_cards {
-  background-color:  #393e46;
+  background-color:  white;
   padding: 10px;
   border-radius: 5px;
   display: flex;

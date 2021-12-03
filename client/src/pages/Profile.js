@@ -5,7 +5,7 @@ import Modal from "@mui/material/Modal";
 import TextField from "@mui/material/TextField";
 import DatePicker from "@mui/lab/DatePicker";
 import { useMutation, useQuery } from "@apollo/client";
-import ProjectCard from '../components/ProjectCard'
+import ProjectCard from "../components/ProjectCard";
 
 import Auth from "../utils/auth";
 
@@ -14,6 +14,7 @@ import { GET_ME } from "../utils/queries";
 
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
+
 
 export default function Profile() {
   const [errorMessage, setErrorMessage] = useState("");
@@ -59,7 +60,7 @@ export default function Profile() {
       window.location.replace(`/project/${data.createProject._id}`);
     } catch (error) {
       console.error(error);
-      setErrorMessage('Please enter all required fields');
+      setErrorMessage("Please enter all required fields");
     }
   };
 
@@ -71,7 +72,10 @@ export default function Profile() {
   return (
     <>
       <>
-        <h1 className="userName">{userData.username}<p className="greeting">.....visualize what you can do.</p></h1>
+        <h1 className="userName">
+          {userData.username}
+          <p className="greeting">.....visualize what you can do.</p>
+        </h1>
 
         <Button onClick={handleOpen}>Create Project</Button>
         <Modal
@@ -86,7 +90,22 @@ export default function Profile() {
                 component="form"
                 noValidate
                 onSubmit={handleSubmit}
-                sx={{ mt: 1 }}
+                sx={{
+                  mt: 1,
+                  backgroundColor: "white",
+                  padding: "2px",
+                  position: "absolute",
+                  top: "50%",
+                  left: "50%",
+                  transform: "translate(-50%, -50%)",
+                  width: 700,
+                  bgcolor: "background.paper",
+                  boxShadow: 24,
+                  p: 4,
+                  
+
+                  
+                }}
               >
                 <TextField
                   margin="normal"
@@ -108,14 +127,17 @@ export default function Profile() {
                   autoComplete="description"
                   autoFocus
                 />
-                <LocalizationProvider dateAdapter={AdapterDateFns}>
+                <LocalizationProvider dateAdapter=
+                {AdapterDateFns}>
                   <DatePicker
+                    
                     label="Start Date"
                     value={startDate}
                     onChange={(newStartDate) => {
                       setStartDate(newStartDate);
                     }}
                     renderInput={(params) => <TextField {...params} />}
+                   
                   />
                 </LocalizationProvider>
                 <LocalizationProvider dateAdapter={AdapterDateFns}>
@@ -133,6 +155,7 @@ export default function Profile() {
                   fullWidth
                   variant="contained"
                   sx={{ mt: 3, mb: 2 }}
+                  style={{backgroundColor: '#4DA8DA', color: '#FFFFFF'}}
                 >
                   Create Project
                 </Button>
@@ -154,7 +177,7 @@ export default function Profile() {
           Logout
         </Button>
       </>
-      <ProjectCard userId={userData._id}/>
+      <ProjectCard userId={userData._id} />
     </>
   );
 }
