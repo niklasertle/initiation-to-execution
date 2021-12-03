@@ -1,125 +1,125 @@
 .custom-scroll::-webkit-scrollbar {
-    width: 8px;
-  }
-  
-  .custom-scroll::-webkit-scrollbar-thumb {
-    border-radius: 50px;
-    border: 1px solid #ccc;
-    background-color: #fff;
-  }
-  
-  .custom-scroll::-webkit-scrollbar-thumb:hover {
-    border: 1px solid gray;
-  }
-  
-  .app {
-    /* width: 100%;
+  width: 8px;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb {
+  border-radius: 50px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb:hover {
+  border: 1px solid gray;
+}
+
+.app {
+  /* width: 100%;
     height: 100vh;
     display: flex;
     flex-direction: column; */
 
-    height: 100vh; /* Magic here */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+  height: 100vh; /* Magic here */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
 
-  }
-  
-  .app_nav {
-    /* padding: 30px; */
-    box-shadow: 0 1px 20px rgba(56, 40, 40, 0.05);
-    /* border-bottom: 1px solid rgba(0, 0, 0, 0.1); */
-    position: sticky;
-    top: 0;
-    background-color: #fff;
-  }
-  
-  .app_boards_container {
-    flex: 1;
-    width: 100%;
-    height: 100%;
-    overflow-x: auto;
-    padding-top: 20px;
-    background-color: #12232E;
-   
-  }
-  
-  .app_boards {
-    height: 100%;
-    width: fit-content;
-    padding: 10px 30px;
-    display: flex;
-    gap: 30px;
-    background-color: #12232E;
-  }
-  
-  .app_boards_last {
-    flex-basis: 290px;
-    min-width: 290px;
-  }
-  
-  .app_boards_add-board {
-    background-color: #fff;
-    color: #000;
-    border-radius: 10px;
-    box-shadow: 1px 1px 0 1px rgba(0, 0, 0, 0.12);
-    width: 100%;
-    text-align: center;
-  }
-  .app_boards_add-board_edit {
-    background-color: #fff;
-    border-radius: 10px;
-    padding: 10px;
-  }
+.app_nav {
+  /* padding: 30px; */
+  box-shadow: 0 1px 20px rgba(56, 40, 40, 0.05);
+  /* border-bottom: 1px solid rgba(0, 0, 0, 0.1); */
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+}
 
-  /* delete line 67-72 probably not needed for scroll bar */
-  .app_outer {
-    flex: 1;
-    width: 100%;
-    overflow-x: auto;
-    padding: 20px;
-  }
+.app_boards_container {
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  overflow-x: auto;
+  padding-top: 20px;
+  background-color: rgb(70, 169, 226);
+}
 
-  .userName {
-    background-color: rgb(70, 169, 226);
-    text-align:left;
-    padding-top: 2%;
-    padding-left: 2%;
-    font-size: 8vh;
-    font-family: 'Anton', sans-serif;
-    color: white;
-    }
+.app_boards {
+  height: 100%;
+  width: fit-content;
+  padding: 10px 30px;
+  display: flex;
+  gap: 30px;
+  background-color: rgb(70, 169, 226);
+}
 
-    .projects {
-      color: rgb(70, 169, 226);
-      padding-left: 2%;
-      font-size: 6vh;
-    font-family: 'Anton', sans-serif;
-    text-align: center;
-    }
+.app_boards_last {
+  flex-basis: 290px;
+  min-width: 290px;
+}
 
-    .greeting {
-   color: rgba(38, 60, 73, 0.699);
-     text-align: left;
-    }
+.app_boards_add-board {
+  background-color: #fff;
+  color: #000;
+  border-radius: 10px;
+  box-shadow: 1px 1px 0 1px rgba(0, 0, 0, 0.12);
+  width: 100%;
+  text-align: center;
+}
+.app_boards_add-board_edit {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 10px;
+}
 
+/* delete line 67-72 probably not needed for scroll bar */
+.app_outer {
+  flex: 1;
+  width: 100%;
+  overflow-x: auto;
+  padding: 20px;
+}
 
-    .projectCards{
-      box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-  transition: all 0.3s bezier(.25,.8,.25,1);
-    }
+.userName {
+  background-color: rgb(70, 169, 226);
+  text-align: left;
+  padding-top: 2%;
+  padding-left: 2%;
+  font-size: 8vh;
+  font-family: "Anton", sans-serif;
+  color: white;
+}
 
+.projects {
+  color: rgb(70, 169, 226);
+  padding-left: 2%;
+  font-size: 6vh;
+  font-family: "Anton", sans-serif;
+  text-align: center;
+}
 
-   .projectCards:hover {
-             box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-        cursor: pointer;
-        background-color: rgb(70, 169, 226);
-        color:white;
-      }
+.greeting {
+  color: rgba(38, 60, 73, 0.699);
+  text-align: left;
+}
 
-      .projectTitle {
-        color: rgba(38, 60, 73, 0.699);
-        text-align: center;
-        align-items: center;
-      }
+.projectCards {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s bezier(0.25, 0.8, 0.25, 1);
+}
+
+.projectCards:hover {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  cursor: pointer;
+  background-color: rgb(70, 169, 226);
+  color: white;
+}
+
+.projectTitle {
+  color: rgba(38, 60, 73, 0.699);
+  text-align: center;
+  align-items: center;
+}
+
+.description {
+  color: rgba(0, 0, 0, 0.836);
+}

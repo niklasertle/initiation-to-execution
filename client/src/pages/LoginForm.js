@@ -11,7 +11,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Paper from "@mui/material/Paper";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useMutation } from "@apollo/client";
-
+import Spotlight from "../images/Spotlight-14.3s-1280px.svg"
 
 import { LOGIN_USER } from "../utils/mutations";
 import Auth from "../utils/auth";
@@ -41,11 +41,13 @@ export default function LoginForm() {
   };
 
   return (
-    <ThemeProvider theme={theme}>
+    
+    <ThemeProvider theme={theme}  >
       <Grid container component="main" sx={{ height: "100vh" }}>
         <CssBaseline />
-
+      
         <Grid
+        
           item
           xs={false}
           sm={4}
@@ -62,6 +64,8 @@ export default function LoginForm() {
             backgroundPosition: "center",
           }}
         />
+
+
         <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
           <Box
             sx={{
@@ -72,10 +76,16 @@ export default function LoginForm() {
               alignItems: "center",
             }}
           >
-            <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-              <LockOutlinedIcon />
+            <Avatar sx={{ m: 1, bgcolor: "lightgrey" }}>
+              <LockOutlinedIcon 
+              sx={{
+                backgroundColor: "lightgrey",
+              }}
+              />
             </Avatar>
-            <Typography component="h1" variant="h5">
+            <Typography component="h1" variant="h5"
+            >
+              
               Sign in
             </Typography>
             <Box
