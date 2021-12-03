@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-import ProjectNavbar from "../components/ProjectNavbar";
+import ResponsiveAppBar from "../components/ProjectNavbar";
 import { useParams } from "react-router-dom";
 
 import Kanban from "../components/Kanban";
 import Settings from "../components/Settings";
 import ChatRoom from "../components/ChatRoom";
-
 import { useQuery } from "@apollo/client";
 
 import { GET_PROJECT } from "../utils/queries";
@@ -44,10 +43,11 @@ export default function Projects() {
   return (
     <>
       <div className="m-3 ">
-        <ProjectNavbar
+        <ResponsiveAppBar
           currentPage={currentPage}
           setCurrentPage={setCurrentPage}
         />
+
         <h1>{projectData.title}</h1>
         <p>{projectData.description}</p>
       </div>
