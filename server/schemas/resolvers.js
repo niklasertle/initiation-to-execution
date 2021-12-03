@@ -107,10 +107,16 @@ const resolvers = {
       return updatedProject;
     },
     updateKanbanStatus: async (parent, { projectId, kanbanId, status }) => {
-      const updatedProject = await Project.findOneAndUpdate(
-        { _id: projectId, kanban: { $elemMatch: { _id: kanbanId } } },
-        { $set: { "kanban.$.status": status } },
-        { new: true, safe: true, upsert: true }
+      const updatedProject = await Project.findOne({
+        _id: projectId,
+      }).findOneAndUpdate(
+        { "kanban._id": kanbanId },
+        {
+          $set: {
+            "kanban.$.status": status,
+          },
+        },
+        { new: true, runValidators: true }
       );
 
       return updatedProject;

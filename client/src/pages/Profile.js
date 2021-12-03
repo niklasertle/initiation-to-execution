@@ -6,7 +6,6 @@ import TextField from "@mui/material/TextField";
 import DatePicker from "@mui/lab/DatePicker";
 import { useMutation, useQuery } from "@apollo/client";
 import ProjectCard from "../components/ProjectCard";
-import ResponsiveAppBar from "../components/ProjectNavbar";
 
 import Auth from "../utils/auth";
 
