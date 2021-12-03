@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-import ProjectNavbar from "../components/ProjectNavbar";
+import ResponsiveAppBar from "../components/ProjectNavbar";
 import { useParams } from "react-router-dom";
 
 import Kanban from "../components/Kanban";
 import Settings from "../components/Settings";
-import ChatRoom from '../components/ChatRoom';
-
+import ChatRoom from "../components/ChatRoom";
 import { useQuery } from "@apollo/client";
 
 import { GET_PROJECT } from "../utils/queries";
@@ -33,23 +32,24 @@ export default function Projects() {
   // Renders the selected component
   function renderPage() {
     if (currentPage === "Kanban") {
-      return <Kanban kanban={projectData.kanban} projectId={projectId}/>;
+      return <Kanban kanban={projectData.kanban} projectId={projectId} />;
     }
     if (currentPage === "Chat") {
       return <ChatRoom />;
     }
     if (currentPage === "Settings") {
-      return <Settings users={projectData.users} projectId={projectId}/>;
+      return <Settings users={projectData.users} projectId={projectId} />;
     }
   }
 
   return (
     <>
       <div className="m-3 ">
-        <ProjectNavbar
+        <ResponsiveAppBar
           currentPage={currentPage}
           setCurrentPage={setCurrentPage}
         />
+
         <h1>{projectData.title}</h1>
         <p>{projectData.description}</p>
       </div>
