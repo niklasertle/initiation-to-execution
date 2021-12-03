@@ -21,7 +21,6 @@ const typeDefs = gql`
   type Kanban {
     _id: ID
     title: String
-    userId: User
     status: String
   }
 

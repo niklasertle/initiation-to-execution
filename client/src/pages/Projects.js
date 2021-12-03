@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 
 import Kanban from "../components/Kanban";
 import Settings from "../components/Settings";
-import ChatRoom from '../components/ChatRoom';
+import ChatRoom from "../components/ChatRoom";
 
 import { useQuery } from "@apollo/client";
 
@@ -23,8 +23,6 @@ export default function Projects() {
   });
   const projectData = data?.project || [];
 
-  // console.log(projectData);
-
   // If the user data hasn't been returned yet return loading
   if (loading) {
     return <h2>LOADING...</h2>;
@@ -33,13 +31,13 @@ export default function Projects() {
   // Renders the selected component
   function renderPage() {
     if (currentPage === "Kanban") {
-      return <Kanban kanban={projectData.kanban} projectId={projectId}/>;
+      return <Kanban kanban={projectData.kanban} projectId={projectId} />;
     }
     if (currentPage === "Chat") {
       return <ChatRoom />;
     }
     if (currentPage === "Settings") {
-      return <Settings users={projectData.users} projectId={projectId}/>;
+      return <Settings users={projectData.users} projectId={projectId} />;
     }
   }
 
