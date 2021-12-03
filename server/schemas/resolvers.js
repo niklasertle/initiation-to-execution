@@ -94,10 +94,9 @@ const resolvers = {
 
       return { message: "Project deleted successfully" };
     },
-    addKanban: async (parent, { projectId, title, description }, context) => {
+    addKanban: async (parent, { projectId, title, status }, context) => {
       const newKanban = {
         title,
-        description,
         userId: context.user._id,
       };
 

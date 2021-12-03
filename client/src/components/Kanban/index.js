@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from "react";
 import Board from "../Board/Board";
 import { Grid } from "@material-ui/core";
+import { useMutation, useQuery } from "@apollo/client";
+
+import {
+  ADD_KHAN_BAN,
+  UPDATE_KHAN_BAN_STATUS,
+  DELETE_KHAN_BAN,
+} from "../../utils/mutations";
 
 function Kanban({ kanban }) {
   console.log(kanban);
@@ -21,6 +28,16 @@ function Kanban({ kanban }) {
       cards: [],
     },
   ]);
+
+  kanban.map((element) => {
+    if (element.statue === "todo") {
+
+    } else if (element.status === 'inprogress') {
+      
+    } else if (element.status === 'done') {
+      
+    }
+  });
 
   const [targetCard, setTargetCard] = useState({
     bid: "",

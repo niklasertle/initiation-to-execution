@@ -3,14 +3,11 @@ const { Schema } = require("mongoose");
 const kanbanSchema = new Schema({
   title: {
     type: String,
-  },
-  description: {
-    type: String,
+    required: true
   },
   userId: { type: Schema.Types.ObjectId, ref: "User" },
   status: {
-    type: String,
-    default: 'todo'
+    type: String
   },
 });
 

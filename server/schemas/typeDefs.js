@@ -21,7 +21,6 @@ const typeDefs = gql`
   type Kanban {
     _id: ID
     title: String
-    description: String
     userId: User
     status: String
   }
@@ -50,7 +49,7 @@ const typeDefs = gql`
     addUserToProject(projectId: ID!, userId: ID!): Project
     removeUserFromProject(projectId: ID!, userId: ID!): Project
     deleteProject(projectId: ID!): Project
-    addKanban(projectId: ID!, title: String!, description: String!): Project
+    addKanban(projectId: ID!, title: String!, status: String!): Project
     updateKanbanStatus(projectId: ID!, kanbanId: ID!, status: String!): Project
     deleteKanban(projectId: ID!, kanbanId: ID!): Project
   }
