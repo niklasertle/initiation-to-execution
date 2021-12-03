@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Board from "../Board/Board";
-import { Grid } from "@material-ui/core";
-import { useMutation, useQuery } from "@apollo/client";
+import { useMutation } from "@apollo/client";
 import Editable from "../Editabled/Editable";
 
 import {
   ADD_KANBAN,
-  UPDATE_KHAN_BAN_STATUS,
+  UPDATE_KANBAN_STATUS,
   DELETE_KANBAN,
 } from "../../utils/mutations";
 
