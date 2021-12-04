@@ -9,8 +9,9 @@
 
 
 .card:hover{
-  background-color: #007CC7;
+  background-color: #082D56;
   cursor:grab;
+  color: #fff;
 }
 
 .card_top {

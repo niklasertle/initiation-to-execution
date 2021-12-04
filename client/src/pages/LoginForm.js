@@ -11,8 +11,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Paper from "@mui/material/Paper";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useMutation } from "@apollo/client";
-import Spotlight from "../images/Spotlight-14.3s-1280px.svg"
-
+import LandingPic from "../../src/images/landing_pic.svg";
 import { LOGIN_USER } from "../utils/mutations";
 import Auth from "../utils/auth";
 
@@ -41,35 +40,33 @@ export default function LoginForm() {
   };
 
   return (
-    
-    <ThemeProvider theme={theme}  >
+    <ThemeProvider theme={theme}>
       <Grid container component="main" sx={{ height: "100vh" }}>
         <CssBaseline />
-      
         <Grid
-        
           item
           xs={false}
           sm={4}
           md={7}
-          sx={{
-            backgroundImage: "url(https://source.unsplash.com/random)",
-            
-            backgroundRepeat: "no-repeat",
-            backgroundColor: (t) =>
-              t.palette.mode === "light"
-                ? t.palette.grey[50]
-                : t.palette.grey[900],
+          justify="space-between"
+          marginBottom="5%"
+          style={{
+            backgroundImage: `url(${LandingPic})`,
             backgroundSize: "cover",
-            backgroundPosition: "center",
           }}
-        />
-
-
-        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+        ></Grid>
+        <Grid
+          item
+          xs={12}
+          sm={8}
+          md={5}
+          component={Paper}
+          elevation={10}
+          square
+        >
           <Box
             sx={{
-              my: 8,
+              my: 20,
               mx: 4,
               display: "flex",
               flexDirection: "column",
@@ -77,22 +74,21 @@ export default function LoginForm() {
             }}
           >
             <Avatar sx={{ m: 1, bgcolor: "lightgrey" }}>
-              <LockOutlinedIcon 
-              sx={{
-                backgroundColor: "lightgrey",
-              }}
+              <LockOutlinedIcon
+                sx={{
+                  backgroundColor: "lightgrey",
+                }}
               />
             </Avatar>
-            <Typography component="h1" variant="h5"
-            >
-              
+            <Typography component="h1" variant="h5">
               Sign in
             </Typography>
+
             <Box
               component="form"
               noValidate
               onSubmit={handleSubmit}
-              sx={{ mt: 1 }}
+              sx={{ mt: 7 }}
             >
               <TextField
                 margin="normal"

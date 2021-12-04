@@ -44,6 +44,7 @@ export default function Projects() {
     <>
       <div className="m-3 ">
         <ResponsiveAppBar
+       
           currentPage={currentPage}
           setCurrentPage={setCurrentPage}
         />

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Board from "../Board/Board";
 import { useMutation } from "@apollo/client";
 import Editable from "../Editabled/Editable";
+import Button from "@mui/material/Button";
 
 import {
   ADD_KANBAN,
@@ -143,12 +144,11 @@ function Kanban({ kanban, projectId }) {
   }, [boards]);
 
   return (
-    <div className="app">
-      <div className="app_nav">
-        <h1>Kanban Board</h1>
-      </div>
+    <div className="kanbanBoard">
+      <div className="app_nav"></div>
       <div className="app_boards_container">
-        <div>
+        <h1 className="kanbanTitle">Kanban Board</h1>{" "}
+        <Button>
           <Editable
             text="+ Add Card"
             placeholder="Enter Card Title"
@@ -156,7 +156,7 @@ function Kanban({ kanban, projectId }) {
             editClass="board_add-card_edit"
             onSubmit={(value) => addCardHandler(value)}
           />
-        </div>
+        </Button>
         <div className="app_boards">
           {boards.map((item) => (
             <Board

@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 // import './App.css';
-import "./Chat.css"
+import "./Chat.css";
 
 // v9 compat packages are API compatible with v8 code
 import firebase from "firebase/compat/app";
@@ -9,6 +9,14 @@ import "firebase/compat/firestore";
 
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useCollectionData } from "react-firebase-hooks/firestore";
+
+//take config info into a dot.env --->send to nik for heroku
+//18-29 put in firebase.js anything that will inti the chatroom
+//git ignore set up to ignore  .env   (research  how to do on front end possibly )
+//import auth and db as the values and use on this file
+//import  firebase  ----> import firebase from "firebase/compat/app";
+// import "firebase/compat/auth";
+// import "firebase/compat/firestore";
 
 firebase.initializeApp({
   apiKey: "AIzaSyCclhjtmMR06z3mczyuaXyIVsThi35Lss0",
@@ -22,6 +30,21 @@ firebase.initializeApp({
 
 const auth = firebase.auth();
 const firestore = firebase.firestore();
+// const db = firebase.database();
+// const username = prompt("What's your name?");
+
+// document.getElementById("send-message").addEventListener("submit", postChat);
+// function postChat(e) {
+//   e.preventDefault();
+//   const timestamp = Date.now();
+//   const chatTxt = document.getElementById("chat-txt");
+//   const message = chatTxt.value;
+//   chatTxt.value = "";
+//   db.ref("messages/" + timestamp).set({
+//     usr: username,
+//     msg: message,
+//   });
+// }
 
 function ChatTime() {
   const [user] = useAuthState(auth);
@@ -29,7 +52,7 @@ function ChatTime() {
   return (
     <div className="ChatBox">
       <header>
-        <h1>⚛️🔥💬</h1>
+        <h1>💬</h1>
         <SignOut />
       </header>
 
@@ -124,6 +147,7 @@ function ChatMessage(props) {
     <>
       <div className={`message ${messageClass}`}>
         <img
+          className="userPhoto"
           src={
             photoURL || "https://api.adorable.io/avatars/23/abott@adorable.png"
           }

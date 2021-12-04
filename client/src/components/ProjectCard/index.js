@@ -1,8 +1,6 @@
 import React from "react";
 import { useQuery } from "@apollo/client";
 import { Link } from "react-router-dom";
-
-import Divider from "@mui/material/Divider";
 import Stack from "@mui/material/Stack";
 import Paper from "@mui/material/Paper";
 import { styled } from "@mui/material/styles";
@@ -36,12 +34,15 @@ export default function ProjectCard({ userId }) {
         direction={{ xs: "column", sm: "row" }}
         justifyContent="center"
         alignItems="center"
-        divider={<Divider orientation="vertical" flexItem />}
         spacing={{ xs: 1, sm: 2, md: 4 }}
       >
         {projectData.map((project) => {
           return (
-            <Item className="projectCards" key={project._id}>
+            <Item
+              className="projectCards"
+              key={project._id}
+              style={{ backgroundColor: "rgb(0 0 0 / 2%)" }}
+            >
               <Link to={() => `/project/${project._id}`}>
                 <h2 className="projectTitle">{project.title}</h2>
               </Link>

@@ -6,15 +6,14 @@ import TextField from "@mui/material/TextField";
 import DatePicker from "@mui/lab/DatePicker";
 import { useMutation, useQuery } from "@apollo/client";
 import ProjectCard from "../components/ProjectCard";
-
+import "../App.css";
 import Auth from "../utils/auth";
-
+import Logo from "../../src/images/i2_logos_white.png";
 import { CREATE_PROJECT } from "../utils/mutations";
 import { GET_ME } from "../utils/queries";
 
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
-
 
 export default function Profile() {
   const [errorMessage, setErrorMessage] = useState("");
@@ -72,115 +71,118 @@ export default function Profile() {
   return (
     <>
       <>
-     
         <h1 className="userName">
           {userData.username}
+          <img className="logo" src={Logo} />
           <p className="greeting">.....visualize what you can do.</p>
-        </h1>
 
-        <Button onClick={handleOpen}>Create Project</Button>
-        <Modal
-          open={open}
-          onClose={handleClose}
-          aria-labelledby="modal-modal-title"
-          aria-describedby="modal-modal-description"
-        >
-          <div className="modal-size">
-            <Box>
-              <Box
-                component="form"
-                noValidate
-                onSubmit={handleSubmit}
-                sx={{
-                  mt: 1,
-                  backgroundColor: "white",
-                  padding: "2px",
-                  position: "absolute",
-                  top: "50%",
-                  left: "50%",
-                  transform: "translate(-50%, -50%)",
-                  width: 700,
-                  bgcolor: "background.paper",
-                  boxShadow: 24,
-                  p: 4,
-                  
+          <Button
+            variant="contained"
+            sx={{ mb: 1, p: 1, mr: 3 }}
+            style={{ backgroundColor: "#082D56", color: "#FFFFFF" }}
+            onClick={handleOpen}
+          >
+            Create Project
+          </Button>
 
-                  
-                }}
-              >
-                <TextField
-                  margin="normal"
-                  required
-                  fullWidth
-                  id="title"
-                  label="Title"
-                  name="title"
-                  autoComplete="title"
-                  autoFocus
-                />
-                <TextField
-                  margin="normal"
-                  required
-                  fullWidth
-                  id="description"
-                  label="Description"
-                  name="description"
-                  autoComplete="description"
-                  autoFocus
-                />
-                <LocalizationProvider dateAdapter=
-                {AdapterDateFns}>
-                  <DatePicker
-                    
-                    label="Start Date"
-                    value={startDate}
-                    onChange={(newStartDate) => {
-                      setStartDate(newStartDate);
-                    }}
-                    renderInput={(params) => <TextField {...params} />}
-                   
-                  />
-                </LocalizationProvider>
-                <LocalizationProvider dateAdapter={AdapterDateFns}>
-                  <DatePicker
-                    label="End Date"
-                    value={endDate}
-                    onChange={(newEndDate) => {
-                      setEndDate(newEndDate);
-                    }}
-                    renderInput={(params) => <TextField {...params} />}
-                  />
-                </LocalizationProvider>
-                <Button
-                  type="submit"
-                  fullWidth
-                  variant="contained"
-                  sx={{ mt: 3, mb: 2 }}
-                  style={{backgroundColor: '#4DA8DA', color: '#FFFFFF'}}
+          <Modal
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="modal-modal-title"
+            aria-describedby="modal-modal-description"
+          >
+            <div className="modal-size">
+              <Box>
+                <Box
+                  component="form"
+                  noValidate
+                  onSubmit={handleSubmit}
+                  sx={{
+                    mt: 1,
+                    backgroundColor: "white",
+                    padding: "2px",
+                    position: "absolute",
+                    top: "50%",
+                    left: "50%",
+                    transform: "translate(-50%, -50%)",
+                    width: 700,
+                    bgcolor: "background.paper",
+                    boxShadow: 24,
+                    p: 4,
+                  }}
                 >
-                  Create Project
-                </Button>
+                  <TextField
+                    margin="normal"
+                    required
+                    fullWidth
+                    id="title"
+                    label="Title"
+                    name="title"
+                    autoComplete="title"
+                    autoFocus
+                  />
+                  <TextField
+                    margin="normal"
+                    required
+                    fullWidth
+                    id="description"
+                    label="Description"
+                    name="description"
+                    autoComplete="description"
+                    autoFocus
+                  />
+                  <LocalizationProvider dateAdapter={AdapterDateFns}>
+                    <DatePicker
+                      label="Start Date"
+                      value={startDate}
+                      onChange={(newStartDate) => {
+                        setStartDate(newStartDate);
+                      }}
+                      renderInput={(params) => <TextField {...params} />}
+                    />
+                  </LocalizationProvider>
+                  <LocalizationProvider dateAdapter={AdapterDateFns}>
+                    <DatePicker
+                      label="End Date"
+                      value={endDate}
+                      onChange={(newEndDate) => {
+                        setEndDate(newEndDate);
+                      }}
+                      renderInput={(params) => <TextField {...params} />}
+                    />
+                  </LocalizationProvider>
+                  <Button
+                    type="submit"
+                    fullWidth
+                    variant="contained"
+                    sx={{ mt: 3, mb: 2 }}
+                    style={{ backgroundColor: "#082D56", color: "#FFFFFF" }}
+                  >
+                    Create Project
+                  </Button>
+                </Box>
+                {errorMessage && (
+                  <div className="m-4 text-danger">
+                    <h4>{errorMessage}</h4>
+                  </div>
+                )}
               </Box>
-              {errorMessage && (
-                <div className="m-4 text-danger">
-                  <h4>{errorMessage}</h4>
-                </div>
-              )}
-            </Box>
-          </div>
-        </Modal>
+            </div>
+          </Modal>
 
-        <Button
-          onClick={() => {
-            Auth.logout();
-          }}
-        >
-          Logout
-        </Button>
+          <Button
+            variant="contained"
+            sx={{ mb: 1, p: 1, mr: 3 }}
+            style={{ backgroundColor: "#082D56", color: "#FFFFFF" }}
+            onClick={() => {
+              Auth.logout();
+            }}
+          >
+            Logout
+          </Button>
+        </h1>
       </>
       <ProjectCard userId={userData._id} />
-     
-
     </>
   );
 }

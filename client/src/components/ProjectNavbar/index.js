@@ -1,5 +1,4 @@
 import React from "react";
-// import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import AppBar from "@mui/material/AppBar";
 import Container from "@mui/material/Container";
@@ -37,11 +36,11 @@ const ResponsiveAppBar = ({ setCurrentPage }) => {
 
   // export default function ProjectNavbar({ setCurrentPage }) {
   return (
-    <AppBar position="static">
+    <AppBar position="static"  style={{backgroundColor:"white"}}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Button>
-            <Link to="/" style={{ textDecoration: "none", color: "white" }}>
+            <Link to="/" style={{ textDecoration: "none", color: "#082D56" }}>
               Home
             </Link>
           </Button>
@@ -57,45 +56,15 @@ const ResponsiveAppBar = ({ setCurrentPage }) => {
             >
               <MenuIcon />
             </IconButton>
-            {/* <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "left",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "left",
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: "block", md: "none" },
-              }}
-            >
-              {pages.map((page) => (
-                <MenuItem onClick={() => setCurrentPage("Kanban")}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
-              ))}
-            </Menu> */}
+          
           </Box>
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}
-          >
-            LOGO
-          </Typography>
+      
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
               <Button
                 key={page}
                 onClick={() => setCurrentPage(page)}
-                sx={{ my: 2, color: "white", display: "block" }}
+                sx={{ my: 2, color: "#082D56", display: "block" }}
               >
                 {page}
               </Button>

@@ -6,11 +6,12 @@
     text-align: center;
     max-width: 728px;
     margin: 0 auto;
+    
   
   }
   
   .ChatBox header {
-    background-color: #181717;
+    background-color: #B3CCEB;
     height: 10vh;
     min-height: 50px;
     color: white;
@@ -23,6 +24,7 @@
     z-index: 99;
     padding: 10px;
     box-sizing: border-box;
+    border-radius: 5px;
   }
   
   .ChatBox section {
@@ -30,8 +32,9 @@
     flex-direction: column;
     justify-content: center;
     min-height: 62vh;
-    background-color: rgb(40, 37, 53);
+    background-color: rgb(255, 255, 255);
     margin-bottom: 10%;
+    border:solid rgb(56, 56, 143);
   }
   
   ChatRoom {
@@ -68,7 +71,7 @@
   
   .ChatForm button {
     width: 20%;
-    background-color: rgb(56, 56, 143);
+    background-color: #082D56 ;
   }
   
   
@@ -76,15 +79,16 @@
     line-height: 1.5;
     width: 100%;
     font-size: 1.5rem;
-    background: rgb(58, 58, 58);
+    background: rgba(253, 253, 253, 0.733);
     color: white;
     outline: none;
     border: none;
     padding: 0 10px;
+    
   }
   
   button {
-    background-color: #282c34; /* Green */
+    background-color: #082D56;
     border: none;
     color: white;
     padding: 15px 32px;
@@ -147,7 +151,7 @@
     color: black;
   }
   
-  img {
+  .userPhoto {
     width: 40px;
     height: 40px;
     border-radius: 50%;
