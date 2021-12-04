@@ -62,6 +62,7 @@ function Kanban({ kanban, projectId }) {
 
   const [addCard] = useMutation(ADD_KANBAN);
   const [deleteCard] = useMutation(DELETE_KANBAN);
+  const [updateStatus] = useMutation(UPDATE_KANBAN_STATUS);
 
   const [targetCard, setTargetCard] = useState({
     bid: "",
@@ -90,37 +91,31 @@ function Kanban({ kanban, projectId }) {
     }
   };
 
-  const dragEnded = (bid, cid) => {
-    let s_boardIndex, s_cardIndex, t_boardIndex, t_cardIndex;
-    s_boardIndex = boards.findIndex((item) => item.id === bid);
-    if (s_boardIndex < 0) return;
+  const dragEnded = async (bid, cid) => {
+    console.log("Drag ended:", bid, "/", cid);
+    console.log(targetCard);
+    try {
+      const { data } = await updateStatus({
+        variables: {
+          projectId,
+          kanbanId: cid,
+          status: bid,
+        },
+      });
 
-    s_cardIndex = boards[s_boardIndex]?.cards?.findIndex(
-      (item) => item.id === cid
-    );
-    if (s_cardIndex < 0) return;
+      setBoards(loadKanban(data.updateKanbanStatus.kanban));
 
-    t_boardIndex = boards.findIndex((item) => item.id === targetCard.bid);
-    if (t_boardIndex < 0) return;
-
-    t_cardIndex = boards[t_boardIndex]?.cards?.findIndex(
-      (item) => item.id === targetCard.cid
-    );
-    if (t_cardIndex < 0) return;
-
-    const tempBoards = [...boards];
-    const sourceCard = tempBoards[s_boardIndex].cards[s_cardIndex];
-    tempBoards[s_boardIndex].cards.splice(s_cardIndex, 1);
-    tempBoards[t_boardIndex].cards.splice(t_cardIndex, 0, sourceCard);
-    setBoards(tempBoards);
-
-    setTargetCard({
-      bid: "",
-      cid: "",
-    });
+      setTargetCard({
+        bid: "",
+        cid: "",
+      });
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const dragEntered = (bid, cid) => {
+    console.log("Drag start", bid, "/", cid);
     if (targetCard.cid === cid) return;
     setTargetCard({
       bid,
