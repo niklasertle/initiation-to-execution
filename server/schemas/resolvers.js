@@ -21,9 +21,7 @@ const resolvers = {
     },
     project: async (parent, { projectId }) => {
       // Return everything in each array
-      return await Project.findOne({ _id: projectId }).populate([
-        "users"
-      ]);
+      return await Project.findOne({ _id: projectId }).populate(["users"]);
     },
   },
   Mutation: {
@@ -94,11 +92,10 @@ const resolvers = {
 
       return { message: "Project deleted successfully" };
     },
-    addKanban: async (parent, { projectId, title, description }, context) => {
+    addKanban: async (parent, { projectId, title, status }) => {
       const newKanban = {
         title,
-        description,
-        userId: context.user._id,
+        status,
       };
 
       const updatedProject = await Project.findOneAndUpdate(
@@ -110,10 +107,16 @@ const resolvers = {
       return updatedProject;
     },
     updateKanbanStatus: async (parent, { projectId, kanbanId, status }) => {
-      const updatedProject = await Project.findOneAndUpdate(
-        { _id: projectId, kanban: { $elemMatch: { _id: kanbanId } } },
-        { $set: { "kanban.$.status": status } },
-        { new: true, safe: true, upsert: true }
+      const updatedProject = await Project.findOne({
+        _id: projectId,
+      }).findOneAndUpdate(
+        { "kanban._id": kanbanId },
+        {
+          $set: {
+            "kanban.$.status": status,
+          },
+        },
+        { new: true, runValidators: true }
       );
 
       return updatedProject;

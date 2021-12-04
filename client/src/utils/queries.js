@@ -40,10 +40,6 @@ export const GET_PROJECT = gql`
       kanban {
         _id
         title
-        description
-        userId {
-          username
-        }
         status
       }
       users {

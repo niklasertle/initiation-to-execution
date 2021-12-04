@@ -30,7 +30,6 @@ export default function Settings({ users, projectId }) {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
 
-    console.log(newUser);
     if (!newUser) {
       setErrorMessage("Please enter a valid username");
       return;
@@ -40,7 +39,7 @@ export default function Settings({ users, projectId }) {
       const { data } = await addUser({
         variables: { projectId, userId: newUser.id },
       });
-      console.log(data);
+      
       setProjectUsers(data.addUserToProject.users)
       setNewUser({ label: "", id: "" });
     } catch (err) {
