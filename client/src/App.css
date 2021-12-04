@@ -13,26 +13,19 @@
 }
 
 .app {
-  /* width: 100%;
-    height: 100vh;
-    display: flex;
-    flex-direction: column; */
-
-  height: 100vh; /* Magic here */
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
 
-.app_nav {
-  /* padding: 30px; */
+/* .app_nav {
   box-shadow: 0 1px 20px rgba(56, 40, 40, 0.05);
-  /* border-bottom: 1px solid rgba(0, 0, 0, 0.1); */
   position: sticky;
   top: 0;
   background-color: #fff;
-}
+} */
 
 .app_boards_container {
   flex: 1;
@@ -40,16 +33,17 @@
   height: 100%;
   overflow-x: auto;
   padding-top: 20px;
-  background-color: rgb(70, 169, 226);
+  background-color: #b3cceb;
 }
 
 .app_boards {
-  height: 100%;
-  width: fit-content;
-  padding: 10px 30px;
+  /* width: fit-content; */
+  /* padding: 10px 30px; */
   display: flex;
-  gap: 30px;
-  background-color: rgb(70, 169, 226);
+  gap: 40px;
+  background-color: #b3cceb;
+  align-items: center;
+  justify-content: center;
 }
 
 .app_boards_last {
@@ -65,13 +59,13 @@
   width: 100%;
   text-align: center;
 }
+
 .app_boards_add-board_edit {
   background-color: #fff;
   border-radius: 10px;
   padding: 10px;
 }
 
-/* delete line 67-72 probably not needed for scroll bar */
 .app_outer {
   flex: 1;
   width: 100%;
@@ -80,7 +74,7 @@
 }
 
 .userName {
-  background-color: rgb(70, 169, 226);
+  background-color: #b3cceb;
   text-align: left;
   padding-top: 2%;
   padding-left: 2%;
@@ -90,16 +84,18 @@
 }
 
 .projects {
-  color: rgb(70, 169, 226);
+  color: #082d56;
   padding-left: 2%;
   font-size: 6vh;
   font-family: "Anton", sans-serif;
   text-align: center;
+  padding-bottom: 1%;
 }
 
 .greeting {
   color: rgba(38, 60, 73, 0.699);
   text-align: left;
+  font-size: 3vh;
 }
 
 .projectCards {
@@ -115,13 +111,26 @@
 }
 
 .projectTitle {
-  color: rgba(38, 60, 73, 0.699);
+  color: #082d56;
   text-align: center;
   align-items: center;
+  font-family: "Anton", sans-serif;
+  font-size: 3vh;
 }
 
 .description {
   color: rgba(0, 0, 0, 0.836);
 }
 
+.logo {
+  height: 10vh;
+  margin-left: 70%;
+}
 
+.kanbanBoard {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}

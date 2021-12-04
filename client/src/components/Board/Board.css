@@ -12,22 +12,22 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  color: #082d56;
 }
 
 .board_header_title {
   font-weight: bold;
-  font-size: 1rem;
+  font-size: 2vh;
   display: flex;
-  gap: 5px;
+  gap: 10px;
   align-items: center;
-  color: #343a40;
+  color: #082d56;
 }
 
 .board_header_title span {
   color: #343a40;
   font-size: 12px;
   font-weight: 500;
-  
 }
 
 .board_header_title_more {
@@ -47,7 +47,7 @@
 }
 
 .board_cards {
-  background-color:  white;
+  background-color: white;
   padding: 10px;
   border-radius: 5px;
   display: flex;
@@ -57,17 +57,21 @@
 }
 
 .board_add-card {
-  background-color: #fff;
-  color: #000;
+  background-color: #082d56;
+  color: white;
   border-radius: 10px;
   box-shadow: 1px 1px 0 1px rgba(0, 0, 0, 0.12);
-  width: 100%;
   text-align: center;
 }
+
 .board_add-card_edit {
-  background-color:  #4DA8DA;
+  background-color: white;
   border-radius: 10px;
   padding: 10px;
 }
 
-
+.kanbanTitle {
+  color: #082d56;
+  font-family: "Anton", sans-serif;
+  font-size: 8vh;
+}
