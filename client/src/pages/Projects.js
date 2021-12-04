@@ -1,13 +1,13 @@
 import React, { useState } from "react";
+import { Redirect } from 'react-router-dom';
 import ResponsiveAppBar from "../components/ProjectNavbar";
 import { useParams } from "react-router-dom";
-
+import Auth from '../utils/auth';
 import Kanban from "../components/Kanban";
 import Settings from "../components/Settings";
 import ChatRoom from "../components/ChatRoom";
 import { useQuery } from "@apollo/client";
-
-import { GET_PROJECT } from "../utils/queries";
+import { GET_PROJECT, GET_ME } from "../utils/queries";
 
 export default function Projects() {
   // Gets the project ID from the parameters
@@ -21,6 +21,8 @@ export default function Projects() {
     variables: { projectId: projectId },
   });
   const projectData = data?.project || [];
+
+  const { data: userData } = useQuery(GET_ME);
 
   // If the user data hasn't been returned yet return loading
   if (loading) {
@@ -40,19 +42,24 @@ export default function Projects() {
     }
   }
 
-  return (
-    <>
-      <div className="m-3 ">
-        <ResponsiveAppBar
-       
-          currentPage={currentPage}
-          setCurrentPage={setCurrentPage}
-        />
 
-        <h1>{projectData.title}</h1>
-        <p>{projectData.description}</p>
-      </div>
-      <>{renderPage()}</>
-    </>
-  );
+  if (Auth.isAllowedToView(projectData.users, userData.me._id)){
+    return (
+      <>
+        <div className="m-3 ">
+          <ResponsiveAppBar
+         
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+          />
+  
+          <h1>{projectData.title}</h1>
+          <p>{projectData.description}</p>
+        </div>
+        <>{renderPage()}</>
+      </>
+    );
+  } else {
+    return <Redirect to="/" />;
+  }
 }
