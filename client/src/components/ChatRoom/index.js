@@ -10,41 +10,19 @@ import "firebase/compat/firestore";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 
-//take config info into a dot.env --->send to nik for heroku
-//18-29 put in firebase.js anything that will inti the chatroom
-//git ignore set up to ignore  .env   (research  how to do on front end possibly )
-//import auth and db as the values and use on this file
-//import  firebase  ----> import firebase from "firebase/compat/app";
-// import "firebase/compat/auth";
-// import "firebase/compat/firestore";
-
 firebase.initializeApp({
   apiKey: "AIzaSyCclhjtmMR06z3mczyuaXyIVsThi35Lss0",
   authDomain: "i2e-app-e92f0.firebaseapp.com",
+  databaseURL: "https://i2e-app-e92f0-default-rtdb.firebaseio.com",
   projectId: "i2e-app-e92f0",
   storageBucket: "i2e-app-e92f0.appspot.com",
   messagingSenderId: "86031308411",
   appId: "1:86031308411:web:4b0c3c2c54dc080ee074de",
-  measurementId: "G-RFN018KD3N",
+  measurementId: "G-RFN018KD3N"
 });
 
 const auth = firebase.auth();
 const firestore = firebase.firestore();
-// const db = firebase.database();
-// const username = prompt("What's your name?");
-
-// document.getElementById("send-message").addEventListener("submit", postChat);
-// function postChat(e) {
-//   e.preventDefault();
-//   const timestamp = Date.now();
-//   const chatTxt = document.getElementById("chat-txt");
-//   const message = chatTxt.value;
-//   chatTxt.value = "";
-//   db.ref("messages/" + timestamp).set({
-//     usr: username,
-//     msg: message,
-//   });
-// }
 
 function ChatTime() {
   const [user] = useAuthState(auth);
@@ -92,7 +70,7 @@ function SignOut() {
 function ChatRoom() {
   const dummy = useRef();
   const messagesRef = firestore.collection("messages");
-  const query = messagesRef.orderBy("createdAt").limitToLast(25);
+  const query = messagesRef.orderBy("createdAt").limit(25);
 
   const [messages] = useCollectionData(query, { idField: "id" });
 
