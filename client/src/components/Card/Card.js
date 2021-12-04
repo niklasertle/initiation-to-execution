@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { CheckSquare, Clock, MoreHorizontal } from "react-feather";
+import { MoreHorizontal } from "react-feather";
 
 import Dropdown from "../Dropdown/Dropdown";
 
@@ -10,7 +10,7 @@ function Card(props) {
   const [showDropdown, setShowDropdown] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
-  const { _id, title, labels } = props.card;
+  const { _id, title } = props.card;
 
   return (
     <>
@@ -30,13 +30,6 @@ function Card(props) {
         onClick={() => setShowModal(true)}
       >
         <div className="card_top">
-          <div className="card_top_labels">
-            {labels?.map((item, index) => (
-              <label key={index} style={{ backgroundColor: item.color }}>
-                {item.text}
-              </label>
-            ))}
-          </div>
           <div
             className="card_top_more"
             onClick={(event) => {

@@ -86,15 +86,23 @@ export const ADD_KANBAN = gql`
 `;
 
 export const UPDATE_KANBAN_STATUS = gql`
-  mutation updateKanbanStatus($projectId: ID!, $kanbanId: ID!, $status: String!){
-  updateKanbanStatus(projectId: $projectId, kanbanId: $kanbanId, status: $status){
-    kanban{
-      _id
-      title
-      status
+  mutation updateKanbanStatus(
+    $projectId: ID!
+    $kanbanId: ID!
+    $status: String!
+  ) {
+    updateKanbanStatus(
+      projectId: $projectId
+      kanbanId: $kanbanId
+      status: $status
+    ) {
+      kanban {
+        _id
+        title
+        status
+      }
     }
   }
-}
 `;
 
 export const DELETE_KANBAN = gql`
