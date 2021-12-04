@@ -39,6 +39,14 @@ function loadKanban(kanban) {
     }
   });
 
+  if (boards[0].cards.length === 0) {
+    boards[0].cards.push({
+      id: "temp2",
+      title: "Try adding a card to the board",
+      status: "todo",
+    });
+  }
+
   if (boards[1].cards.length === 0) {
     boards[1].cards.push({
       id: "temp1",
@@ -93,17 +101,23 @@ function Kanban({ kanban, projectId }) {
   };
 
   const dragEnded = async (bid, cid) => {
-    console.log("Drag ended:", bid, "/", cid);
-    console.log(targetCard);
+    let s_boardIndex, s_cardIndex, t_boardIndex;
+    s_boardIndex = boards.findIndex((item) => item.id === bid);
+
+    s_cardIndex = boards[s_boardIndex]?.cards?.findIndex(
+      (item) => item._id === cid
+    );
+
+    t_boardIndex = boards.findIndex((item) => item.id === targetCard.bid);
+
     try {
       const { data } = await updateStatus({
         variables: {
           projectId,
-          kanbanId: cid,
-          status: bid,
+          kanbanId: boards[s_boardIndex].cards[s_cardIndex]._id,
+          status: boards[t_boardIndex].id,
         },
       });
-
       setBoards(loadKanban(data.updateKanbanStatus.kanban));
 
       setTargetCard({
@@ -116,7 +130,6 @@ function Kanban({ kanban, projectId }) {
   };
 
   const dragEntered = (bid, cid) => {
-    console.log("Drag start", bid, "/", cid);
     if (targetCard.cid === cid) return;
     setTargetCard({
       bid,
