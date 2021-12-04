@@ -32,7 +32,7 @@ export default function Projects() {
   // Renders the selected component
   function renderPage() {
     if (currentPage === "Kanban") {
-      return <Kanban kanban={projectData.kanban} projectId={projectId} />;
+      return <Kanban kanban={projectData.kanban} projectId={projectId} title={projectData.title} />;
     }
     if (currentPage === "Chat") {
       return <ChatRoom />;
@@ -41,7 +41,6 @@ export default function Projects() {
       return <Settings users={projectData.users} projectId={projectId} />;
     }
   }
-
 
   if (Auth.isAllowedToView(projectData.users, userData.me._id)){
     return (
@@ -53,8 +52,6 @@ export default function Projects() {
             setCurrentPage={setCurrentPage}
           />
   
-          <h1>{projectData.title}</h1>
-          <p>{projectData.description}</p>
         </div>
         <>{renderPage()}</>
       </>
