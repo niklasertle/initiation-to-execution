@@ -68,7 +68,7 @@ function loadKanban(kanban) {
   return boards;
 }
 
-function Kanban({ kanban, projectId, title }) {
+function Kanban({ kanban, projectId, title, description }) {
   const [boards, setBoards] = useState(loadKanban(kanban));
 
   const [addCard] = useMutation(ADD_KANBAN);
@@ -144,6 +144,7 @@ function Kanban({ kanban, projectId, title }) {
       <div className="app_nav"></div>
       <div className="app_boards_container">
         <h1 className="kanbanTitle">{title}</h1>
+        <p >{description} </p>
         <Button>
           <Editable
             text="+ Add Card"
