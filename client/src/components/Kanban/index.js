@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import Board from "../Board/Board";
+import React, { useState } from "react";
+import Board from "../Board";
 import { useMutation } from "@apollo/client";
 import Editable from "../Editabled/Editable";
 import Button from "@mui/material/Button";
@@ -41,7 +41,7 @@ function loadKanban(kanban) {
 
   if (boards[0].cards.length === 0) {
     boards[0].cards.push({
-      id: "temp2",
+      _id: "temp2",
       title: "Try adding a card to the board",
       status: "todo",
     });
@@ -49,7 +49,7 @@ function loadKanban(kanban) {
 
   if (boards[1].cards.length === 0) {
     boards[1].cards.push({
-      id: "temp1",
+      _id: "temp1",
       title: "Drag a card here to see it function",
       status: "inprogress",
     });
@@ -57,7 +57,7 @@ function loadKanban(kanban) {
 
   if (boards[2].cards.length === 0) {
     boards[2].cards.push({
-      id: "temp2",
+      _id: "temp2",
       title: "Drag a card here to see it function",
       status: "done",
     });
@@ -137,25 +137,6 @@ function Kanban({ kanban, projectId }) {
     });
   };
 
-  const updateCard = (bid, cid, card) => {
-    const index = boards.findIndex((item) => item.id === bid);
-    if (index < 0) return;
-
-    const tempBoards = [...boards];
-    const cards = tempBoards[index].cards;
-
-    const cardIndex = cards.findIndex((item) => item.id === cid);
-    if (cardIndex < 0) return;
-
-    tempBoards[index].cards[cardIndex] = card;
-
-    setBoards(tempBoards);
-  };
-
-  useEffect(() => {
-    localStorage.setItem("prac-kanban", JSON.stringify(boards));
-  }, [boards]);
-
   return (
     <div className="kanbanBoard">
       <div className="app_nav"></div>
@@ -179,7 +160,6 @@ function Kanban({ kanban, projectId }) {
               removeCard={removeCard}
               dragEnded={dragEnded}
               dragEntered={dragEntered}
-              updateCard={updateCard}
             />
           ))}
         </div>
