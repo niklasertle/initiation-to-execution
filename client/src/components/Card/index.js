@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { MoreHorizontal } from "react-feather";
 
-import Dropdown from "../Dropdown/Dropdown";
+import Dropdown from "../Dropdown";
 
 import "./Card.css";
-import CardInfo from "./CardInfo/CardInfo";
+import CardInfo from "./CardInfo";
 
 function Card(props) {
   const [showDropdown, setShowDropdown] = useState(false);
@@ -19,7 +19,6 @@ function Card(props) {
           onClose={() => setShowModal(false)}
           card={props.card}
           boardId={props.boardId}
-          updateCard={props.updateCard}
         />
       )}
       <div
