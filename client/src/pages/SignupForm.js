@@ -11,9 +11,10 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Paper from "@mui/material/Paper";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useMutation } from "@apollo/client";
-
+import LandingPic from "../../src/images/landing_pic.svg";
 import { ADD_USER } from "../utils/mutations";
 import Auth from "../utils/auth";
+import "../App.css";
 
 const theme = createTheme();
 
@@ -36,28 +37,29 @@ export default function SignupForm() {
       Auth.login(data.addUser.token);
     } catch (error) {
       console.error(error);
-      setErrorMessage("Please enter a valid username, email, or password")
+      setErrorMessage("Please enter a valid username, email, or password");
     }
   };
 
   return (
     <ThemeProvider theme={theme}>
-      <Grid container component="main" sx={{ height: "100vh" }}>
+      <Grid
+        className="body"
+        container
+        component="main"
+        sx={{ height: "100vh" }}
+      >
         <CssBaseline />
         <Grid
           item
           xs={false}
           sm={4}
           md={7}
-          sx={{
-            backgroundImage: "url(https://source.unsplash.com/random)",
-            backgroundRepeat: "no-repeat",
-            backgroundColor: (t) =>
-              t.palette.mode === "light"
-                ? t.palette.grey[50]
-                : t.palette.grey[900],
+          justify="space-between"
+          marginBottom="5%"
+          style={{
+            backgroundImage: `url(${LandingPic})`,
             backgroundSize: "cover",
-            backgroundPosition: "center",
           }}
         />
         <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
@@ -128,10 +130,10 @@ export default function SignupForm() {
                 </Grid>
               </Grid>
               {errorMessage && (
-              <div className="m-4 text-danger">
-                <h4>{errorMessage}</h4>
-              </div>
-            )}
+                <div className="m-4 text-danger">
+                  <h4>{errorMessage}</h4>
+                </div>
+              )}
             </Box>
           </Box>
         </Grid>

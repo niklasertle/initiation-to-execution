@@ -44,7 +44,7 @@ function loadKanban(kanban) {
   if (boards[0].cards.length === 0) {
     boards[0].cards.push({
       _id: "temp2",
-      title: "Try adding a card to the board",
+      title: "Add new task card",
       status: "todo",
     });
   }
@@ -52,7 +52,7 @@ function loadKanban(kanban) {
   if (boards[1].cards.length === 0) {
     boards[1].cards.push({
       _id: "temp1",
-      title: "Drag a card here to see it function",
+      title: "Drag task card here",
       status: "inprogress",
     });
   }
@@ -60,7 +60,7 @@ function loadKanban(kanban) {
   if (boards[2].cards.length === 0) {
     boards[2].cards.push({
       _id: "temp2",
-      title: "Drag a card here to see it function",
+      title: "Drag task card here",
       status: "done",
     });
   }
@@ -144,16 +144,8 @@ function Kanban({ kanban, projectId, title, description }) {
       <div className="app_nav"></div>
       <div className="app_boards_container">
         <h1 className="kanbanTitle">{title}</h1>
-        <p >{description} </p>
-        <Button>
-          <Editable
-            text="+ Add Card"
-            placeholder="Enter Card Title"
-            displayClass="board_add-card"
-            editClass="board_add-card_edit"
-            onSubmit={(value) => addCardHandler(value)}
-          />
-        </Button>
+        <p className="projectDesc">{description} </p>
+       
         <div className="app_boards">
           {boards.map((item) => (
             <Board
@@ -164,10 +156,22 @@ function Kanban({ kanban, projectId, title, description }) {
               dragEnded={dragEnded}
               dragEntered={dragEntered}
             />
-          ))}
+            
+          ))} <Button>
+          <Editable
+            text="+ Add Card"
+            placeholder="Enter Card Title"
+            displayClass="board_add-card"
+            editClass="board_add-card_edit"
+            onSubmit={(value) => addCardHandler(value)}
+          />
+        </Button>
         </div>
+        
       </div>
+      
     </div>
+    
   );
 }
 

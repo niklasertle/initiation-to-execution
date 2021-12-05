@@ -11,8 +11,10 @@ import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import { Tooltip } from "@mui/material";
 import { Fade } from "@mui/material";
+import { Zoom } from "@mui/material";
+import DeleteIcon from "@mui/icons-material/Delete";
 
-export default function Settings({ users, projectId, }) {
+export default function Settings({ users, projectId }) {
   // useState to update the list of users on the project
   const [projectUsers, setProjectUsers] = useState(users);
 
@@ -41,8 +43,8 @@ export default function Settings({ users, projectId, }) {
       const { data } = await addUser({
         variables: { projectId, userId: newUser.id },
       });
-      
-      setProjectUsers(data.addUserToProject.users)
+
+      setProjectUsers(data.addUserToProject.users);
       setNewUser({ label: "", id: "" });
     } catch (err) {
       console.log(error);
@@ -56,7 +58,7 @@ export default function Settings({ users, projectId, }) {
       });
 
       console.log(data);
-      setProjectUsers(data.removeUserFromProject.users)
+      setProjectUsers(data.removeUserFromProject.users);
     } catch (err) {
       console.log(error);
     }
@@ -72,7 +74,15 @@ export default function Settings({ users, projectId, }) {
             {projectUsers.map((user) => {
               return (
                 <li key={`${user._id}userList`}>
-                  <p>{user.username}<Button variant="light" onClick={() => handleDeleteUser(user._id)}>X</Button></p>
+                  <p>
+                    {user.username}
+                    <Button
+                      variant="light"
+                      onClick={() => handleDeleteUser(user._id)}
+                    >
+                      X
+                    </Button>
+                  </p>
                 </li>
               );
             })}
@@ -128,20 +138,24 @@ export default function Settings({ users, projectId, }) {
         </div>
       </div>
       <div>
-      <Tooltip
-      TransitionComponent={Fade}
-      TransitionProps={{ timeout: 600 }}
-      title="Are you sure you want to delete this project?"
-     >
-        <Button
-          onClick={async () => {
-            await deleteProject({ variables: { projectId } });
-            window.location.replace("/");
-          }}
+        <Tooltip
+          TransitionComponent={Zoom}
+          TransitionComponent={Fade}
+          TransitionProps={{ timeout: 600 }}
+          title="Are you sure you want to delete this project?"
         >
-          Delete Project
-        </Button>
+          <Button
+            onClick={async () => {
+              await deleteProject({ variables: { projectId } });
+              window.location.replace("/");
+            }}
+          >
+            <DeleteIcon />
+            Delete Project
+          </Button>
         </Tooltip>
+        
+
       </div>
     </div>
   );

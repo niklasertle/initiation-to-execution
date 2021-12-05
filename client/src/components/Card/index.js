@@ -1,6 +1,7 @@
+import { Button } from "@mui/material";
 import React, { useState } from "react";
 import { MoreHorizontal } from "react-feather";
-
+import DeleteIcon from "@mui/icons-material/Delete";
 import Dropdown from "../Dropdown";
 
 import "./Card.css";
@@ -38,12 +39,12 @@ function Card(props) {
           >
             <MoreHorizontal />
             {showDropdown && (
-              <Dropdown
+              <Button
                 class="board_dropdown"
                 onClose={() => setShowDropdown(false)}
               >
-                <p onClick={() => props.removeCard(_id)}>Delete Card</p>
-              </Dropdown>
+                <p onClick={() => props.removeCard(_id)}><DeleteIcon />Delete</p>
+              </Button>
             )}
           </div>
         </div>

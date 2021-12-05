@@ -16,6 +16,7 @@ import { GET_ME } from "../utils/queries";
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
 
+
 export default function Profile() {
   const [errorMessage, setErrorMessage] = useState("");
   // useState to watch if the modal should be open
@@ -77,14 +78,7 @@ export default function Profile() {
           <img className="logo" src={Logo} alt='Logo'/>
           <p className="greeting">.....visualize what you can do.</p>
 
-          <Button
-            variant="contained"
-            sx={{ mb: 1, p: 1, mr: 3 }}
-            style={{ backgroundColor: "#082D56", color: "#FFFFFF" }}
-            onClick={handleOpen}
-          >
-            Create Project
-          </Button>
+         
 
           <Modal
             open={open}
@@ -171,6 +165,17 @@ export default function Profile() {
             </div>
           </Modal>
 
+       
+        </h1>
+      </>
+      <Button
+            variant="contained"
+            sx={{ mb: 1, ml:3, p: 1, mr: 3 }}
+            style={{ backgroundColor: "#082D56", color: "#FFFFFF" }}
+            onClick={handleOpen}
+          >
+            Create Project
+          </Button>
           <Button
             variant="contained"
             sx={{ mb: 1, p: 1, mr: 3 }}
@@ -181,8 +186,6 @@ export default function Profile() {
           >
             Logout
           </Button>
-        </h1>
-      </>
       <ProjectCard userId={userData._id} />
     </>
   );
