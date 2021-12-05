@@ -12,7 +12,6 @@ import Logo from "../../src/images/i2_logos_white.png";
 import { CREATE_PROJECT } from "../utils/mutations";
 import { GET_ME } from "../utils/queries";
 
-
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
 
@@ -76,15 +75,6 @@ export default function Profile() {
           {userData.username}
           <img className="logo" src={Logo} alt='Logo'/>
           <p className="greeting">.....visualize what you can do.</p>
-
-          <Button
-            variant="contained"
-            sx={{ mb: 1, p: 1, mr: 3 }}
-            style={{ backgroundColor: "#082D56", color: "#FFFFFF" }}
-            onClick={handleOpen}
-          >
-            Create Project
-          </Button>
 
           <Modal
             open={open}
@@ -170,19 +160,26 @@ export default function Profile() {
               </Box>
             </div>
           </Modal>
-
-          <Button
-            variant="contained"
-            sx={{ mb: 1, p: 1, mr: 3 }}
-            style={{ backgroundColor: "#082D56", color: "#FFFFFF" }}
-            onClick={() => {
-              Auth.logout();
-            }}
-          >
-            Logout
-          </Button>
         </h1>
       </>
+      <Button
+        variant="contained"
+        sx={{ mb: 1, ml: 3, p: 1, mr: 3 }}
+        style={{ backgroundColor: "#082D56", color: "#FFFFFF" }}
+        onClick={handleOpen}
+      >
+        Create Project
+      </Button>
+      <Button
+        variant="contained"
+        sx={{ mb: 1, p: 1, mr: 3 }}
+        style={{ backgroundColor: "#082D56", color: "#FFFFFF" }}
+        onClick={() => {
+          Auth.logout();
+        }}
+      >
+        Logout
+      </Button>
       <ProjectCard userId={userData._id} />
     </>
   );

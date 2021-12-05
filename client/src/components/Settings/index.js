@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useMutation, useQuery } from "@apollo/client";
-import { Button } from "react-bootstrap";
+import Button from "@mui/material/Button";
+
 import {
   ADD_USER_TO_PROJECT,
   REMOVE_USER_FROM_PROJECT,
@@ -9,6 +10,12 @@ import {
 import { GET_ALL_USERS } from "../../utils/queries";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
+import { Tooltip } from "@mui/material";
+import { Fade } from "@mui/material";
+import { Zoom } from "@mui/material";
+import DeleteIcon from "@mui/icons-material/Delete";
+import SupervisedUserCircleIcon from "@mui/icons-material/SupervisedUserCircle";
+import PersonIcon from "@mui/icons-material/Person";
 
 export default function Settings({ users, projectId }) {
   // useState to update the list of users on the project
@@ -39,8 +46,8 @@ export default function Settings({ users, projectId }) {
       const { data } = await addUser({
         variables: { projectId, userId: newUser.id },
       });
-      
-      setProjectUsers(data.addUserToProject.users)
+
+      setProjectUsers(data.addUserToProject.users);
       setNewUser({ label: "", id: "" });
     } catch (err) {
       console.log(error);
@@ -54,7 +61,7 @@ export default function Settings({ users, projectId }) {
       });
 
       console.log(data);
-      setProjectUsers(data.removeUserFromProject.users)
+      setProjectUsers(data.removeUserFromProject.users);
     } catch (err) {
       console.log(error);
     }
@@ -62,22 +69,34 @@ export default function Settings({ users, projectId }) {
 
   return (
     <div className="m-5">
-      <h2>Settings</h2>
+      <h2 className="settings">Project Settings</h2>
       <div className="row">
         <div className="col-6">
-          <h3>Current users</h3>
+          <h3 className="currentUser">
+            <SupervisedUserCircleIcon /> Current users
+          </h3>
           <ul>
             {projectUsers.map((user) => {
               return (
                 <li key={`${user._id}userList`}>
-                  <p>{user.username}<Button variant="light" onClick={() => handleDeleteUser(user._id)}>X</Button></p>
+                  <p className="projUserName">
+                    {user.username}
+                    <Button
+                      variant="light"
+                      onClick={() => handleDeleteUser(user._id)}
+                    >
+                      X
+                    </Button>
+                  </p>
                 </li>
               );
             })}
           </ul>
         </div>
         <div className="col-6">
-          <h3 className="m-3">Add a user</h3>
+          <h3 className="m-3" className="currentUser">
+            <PersonIcon /> Add a user
+          </h3>
           <div>
             <form className="form contact-form">
               <div className="form-group m-3">
@@ -108,13 +127,14 @@ export default function Settings({ users, projectId }) {
                 />
               </div>
               <div className="form-group m-4">
-                <button
+                <Button
+                 style={{ backgroundColor: "#082D56", color: "#FFFFFF" }}
                   className="btn btn-primary"
                   type="button"
                   onClick={handleFormSubmit}
                 >
                   Submit
-                </button>
+                </Button>
               </div>
             </form>
             {errorMessage && (
@@ -125,13 +145,23 @@ export default function Settings({ users, projectId }) {
           </div>
         </div>
       </div>
-      <div>
+      
+      <div className="deleteArea">
+      <p className="dangerZone"> Danger Zone</p>
+        <p>
+          Once you delete a project, there is no going back. Please be certain.
+        
+       
+        </p>
         <Button
-          onClick={async () => {
+         style={{ backgroundColor: "red", color: "#FFFFFF" }}
+            onClick={async () => {
             await deleteProject({ variables: { projectId } });
             window.location.replace("/");
+            
           }}
         >
+          <DeleteIcon />
           Delete Project
         </Button>
       </div>

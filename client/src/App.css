@@ -20,20 +20,15 @@
   flex-direction: column;
 }
 
-/* .app_nav {
-  box-shadow: 0 1px 20px rgba(56, 40, 40, 0.05);
-  position: sticky;
-  top: 0;
-  background-color: #fff;
-} */
-
 .app_boards_container {
   flex: 1;
   width: 100%;
   height: 100%;
   overflow-x: auto;
   padding-top: 20px;
-  background-color: #b3cceb;
+  vertical-align: super;
+
+  /* background-color: #b3cceb; */
 }
 
 .app_boards {
@@ -41,9 +36,10 @@
   /* padding: 10px 30px; */
   display: flex;
   gap: 40px;
-  background-color: #b3cceb;
+  /* background-color: #b3cceb; */
   align-items: center;
   justify-content: center;
+  vertical-align: super;
 }
 
 .app_boards_last {
@@ -78,7 +74,7 @@
   text-align: left;
   padding-top: 2%;
   padding-left: 2%;
-  font-size: 8vh;
+  font-size: 10vh;
   font-family: "Anton", sans-serif;
   color: white;
 }
@@ -116,6 +112,7 @@
   align-items: center;
   font-family: "Anton", sans-serif;
   font-size: 3vh;
+  padding-top: 10%;
 }
 
 .description {
@@ -125,6 +122,8 @@
 .logo {
   height: 10vh;
   margin-left: 70%;
+  background-color: rgb(8, 45, 86);
+  border-radius: 10%;
 }
 
 .kanbanBoard {
@@ -133,4 +132,100 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+.body {
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+body {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #101010;
+}
+
+p {
+}
+
+@keyframes repeat {
+  0% {
+    color: lightblue;
+    text-shadow: 5px 5px 30px lightblue;
+  }
+  20% {
+    color: #45aaf2;
+    text-shadow: 5px 5px 30px #45aaf2;
+  }
+  40% {
+    color: #2d98da;
+    text-shadow: 5px 5px 30px #2d98da;
+  }
+  60% {
+    color: #4b7bec;
+    text-shadow: 5px 5px 30px #2d98da;
+  }
+  80% {
+    color: #3867d6;
+    text-shadow: 5px 5px 30px #3867d6;
+  }
+  100% {
+    color: lightblue;
+    text-shadow: 5px 5px 30px lightblue;
+  }
+}
+
+.settings {
+  font-family: "Anton", sans-serif;
+  text-align: center;
+  color: #082d56;
+  font-size: 3rem;
+}
+
+.projUserName {
+  font-size: 3vh;
+
+  /* padding-right: 16px; */
+  margin-left: 4%; 
+ 
+}
+
+.deleteArea {
+  border: solid black;
+  padding: 10px;
+  padding-bottom: 8px;
+}
+
+.dangerZone {
+  color: red;
+  font-size: 30px;
+  font-family: "Anton", sans-serif;
+
+}
+
+.currentUser {
+  font-family: "Anton", sans-serif;
+  color: #082d56;
+
 }

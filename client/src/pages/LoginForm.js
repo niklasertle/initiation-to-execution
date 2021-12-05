@@ -14,6 +14,7 @@ import { useMutation } from "@apollo/client";
 import LandingPic from "../../src/images/landing_pic.svg";
 import { LOGIN_USER } from "../utils/mutations";
 import Auth from "../utils/auth";
+import "../../src/App.css";
 
 const theme = createTheme();
 
@@ -41,8 +42,14 @@ export default function LoginForm() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Grid container component="main" sx={{ height: "100vh" }}>
+      <Grid
+        className="body"
+        container
+        component="main"
+        sx={{ height: "100vh" }}
+      >
         <CssBaseline />
+
         <Grid
           item
           xs={false}
@@ -66,17 +73,17 @@ export default function LoginForm() {
         >
           <Box
             sx={{
-              my: 20,
+              my: 8,
               mx: 4,
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
             }}
           >
-            <Avatar sx={{ m: 1, bgcolor: "lightgrey" }}>
+            <Avatar sx={{ m: 1, bgcolor: "rgb(8, 45, 86)" }}>
               <LockOutlinedIcon
                 sx={{
-                  backgroundColor: "lightgrey",
+                  backgroundColor:"rgb(8, 45, 86)",
                 }}
               />
             </Avatar>
@@ -114,7 +121,7 @@ export default function LoginForm() {
                 type="submit"
                 fullWidth
                 variant="contained"
-                sx={{ mt: 3, mb: 2 }}
+                sx={{ mt: 3, mb: 2, backgroundColor:"rgb(8, 45, 86)",}}
               >
                 Sign In
               </Button>

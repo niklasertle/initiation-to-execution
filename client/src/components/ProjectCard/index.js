@@ -23,7 +23,7 @@ export default function ProjectCard({ userId }) {
 
   // If it hasn't returned yet return this
   if (loading) {
-    return <h2>LOADING...</h2>;
+    return <h2>LOADING...productivity is coming!</h2>;
   }
 
   return (

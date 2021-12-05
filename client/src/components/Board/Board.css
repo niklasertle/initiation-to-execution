@@ -17,7 +17,7 @@
 
 .board_header_title {
   font-weight: bold;
-  font-size: 2vh;
+  font-size: 1.4rem;
   display: flex;
   gap: 10px;
   align-items: center;
@@ -26,7 +26,7 @@
 
 .board_header_title span {
   color: #343a40;
-  font-size: 12px;
+  font-size: 1rem;
   font-weight: 500;
 }
 
@@ -36,18 +36,25 @@
 }
 
 .board_dropdown {
-  box-shadow: 1px 0px 20px rgba(0, 0, 0, 0.12);
-  padding: 20px;
-  width: 150px !important;
+  /* box-shadow: 1px 0px 20px rgba(0, 0, 0, 0.12); */
+  padding: 2px;
+  width: 100px !important;
   cursor: default;
 }
-.board_dropdown p {
-  border-bottom: 1px solid #f8f8f8;
+.board_dropdown  {
+  /* border-bottom: 1px solid #f8f8f8; */
   cursor: pointer;
+  background-color: white;
+  color: #082d56;
+  border-radius: 0.25rem;
+}
+
+.board_dropdown:hover{
+  background-color: rgb(5, 110, 180);
 }
 
 .board_cards {
-  background-color: white;
+  background-color: #adb5bd;
   padding: 10px;
   border-radius: 5px;
   display: flex;
@@ -74,4 +81,10 @@
   color: #082d56;
   font-family: "Anton", sans-serif;
   font-size: 8vh;
+  text-align: center;
+}
+
+.projectDesc {
+  text-align: center;
+
 }

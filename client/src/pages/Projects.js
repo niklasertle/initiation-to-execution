@@ -32,7 +32,7 @@ export default function Projects() {
   // Renders the selected component
   function renderPage() {
     if (currentPage === "Kanban") {
-      return <Kanban kanban={projectData.kanban} projectId={projectId} title={projectData.title} />;
+      return <Kanban kanban={projectData.kanban} projectId={projectId} title={projectData.title}  description={projectData.description}/>;
     }
     if (currentPage === "Chat") {
       return <ChatRoom />;
@@ -52,8 +52,8 @@ export default function Projects() {
             setCurrentPage={setCurrentPage}
           />
 
-          <h1>{projectData.title}</h1>
-          <p>{projectData.description}</p>
+          {/* <h1>{projectData.title}</h1>
+          <p>{projectData.description}</p> */}
         </div>
         <>{renderPage()}</>
       </>
