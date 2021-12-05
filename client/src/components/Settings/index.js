@@ -9,8 +9,10 @@ import {
 import { GET_ALL_USERS } from "../../utils/queries";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
+import { Tooltip } from "@mui/material";
+import { Fade } from "@mui/material";
 
-export default function Settings({ users, projectId }) {
+export default function Settings({ users, projectId, }) {
   // useState to update the list of users on the project
   const [projectUsers, setProjectUsers] = useState(users);
 
@@ -126,6 +128,11 @@ export default function Settings({ users, projectId }) {
         </div>
       </div>
       <div>
+      <Tooltip
+      TransitionComponent={Fade}
+      TransitionProps={{ timeout: 600 }}
+      title="Are you sure you want to delete this project?"
+     >
         <Button
           onClick={async () => {
             await deleteProject({ variables: { projectId } });
@@ -134,6 +141,7 @@ export default function Settings({ users, projectId }) {
         >
           Delete Project
         </Button>
+        </Tooltip>
       </div>
     </div>
   );

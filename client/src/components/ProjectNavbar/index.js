@@ -77,7 +77,7 @@ import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import Auth from "../../utils/auth"
-
+import ViewKanbanIcon from '@mui/icons-material/ViewKanban';
 
 const pages = ["Kanban", "Chat", "Settings"];
 
@@ -107,13 +107,16 @@ export default function TemporaryDrawer({setCurrentPage}) {
       onKeyDown={toggleDrawer(anchor, false)}
     >
         {pages.map((page) => (
+          
               <Button
                 key={page}
                 onClick={() => setCurrentPage(page)}
                 sx={{ my: 2, color: "#082D56", display: "block" }}
               >
                 {page}
+                
               </Button>
+              
               
             ))}
 
@@ -144,6 +147,8 @@ export default function TemporaryDrawer({setCurrentPage}) {
             anchor={anchor}
             open={state[anchor]}
             onClose={toggleDrawer(anchor, false)}
+            
+            
           >
             {list(anchor)}
           </Drawer>

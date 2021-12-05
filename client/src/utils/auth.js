@@ -48,7 +48,7 @@ class AuthService {
   isAllowedToView(projectUsers, currentUserId) {
     let isAuth = false
     projectUsers.forEach((user) => {
-      if (currentUserId == user._id) {
+      if (currentUserId === user._id) {
         isAuth = true;
       }
     });

@@ -52,8 +52,8 @@ export default function Projects() {
             setCurrentPage={setCurrentPage}
           />
 
-          <h1>{projectData.title}</h1>
-          <p>{projectData.description}</p>
+          {/* <h1>{projectData.title}</h1>
+          <p>{projectData.description}</p> */}
         </div>
         <>{renderPage()}</>
       </>
