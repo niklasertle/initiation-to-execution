@@ -5,7 +5,6 @@ import Editable from "../Editabled/Editable";
 import Button from "@mui/material/Button";
 import ProjectCard from "../ProjectCard";
 
-
 import {
   ADD_KANBAN,
   UPDATE_KANBAN_STATUS,
@@ -145,7 +144,7 @@ function Kanban({ kanban, projectId, title, description }) {
       <div className="app_boards_container">
         <h1 className="kanbanTitle">{title}</h1>
         <p className="projectDesc">{description} </p>
-       
+
         <div className="app_boards">
           {boards.map((item) => (
             <Board
@@ -156,22 +155,19 @@ function Kanban({ kanban, projectId, title, description }) {
               dragEnded={dragEnded}
               dragEntered={dragEntered}
             />
-            
-          ))} <Button>
-          <Editable
-            text="+ Add Card"
-            placeholder="Enter Card Title"
-            displayClass="board_add-card"
-            editClass="board_add-card_edit"
-            onSubmit={(value) => addCardHandler(value)}
-          />
-        </Button>
+          ))}{" "}
+          <Button>
+            <Editable
+              text="+ Add Card"
+              placeholder="Enter Card Title"
+              displayClass="board_add-card"
+              editClass="board_add-card_edit"
+              onSubmit={(value) => addCardHandler(value)}
+            />
+          </Button>
         </div>
-        
       </div>
-      
     </div>
-    
   );
 }
 

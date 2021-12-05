@@ -43,7 +43,10 @@ function Card(props) {
                 class="board_dropdown"
                 onClose={() => setShowDropdown(false)}
               >
-                <p onClick={() => props.removeCard(_id)}><DeleteIcon />Delete</p>
+                <p onClick={() => props.removeCard(_id)}>
+                  <DeleteIcon />
+                  Delete
+                </p>
               </Button>
             )}
           </div>

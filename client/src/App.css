@@ -20,19 +20,14 @@
   flex-direction: column;
 }
 
-/* .app_nav {
-  box-shadow: 0 1px 20px rgba(56, 40, 40, 0.05);
-  position: sticky;
-  top: 0;
-  background-color: #fff;
-} */
-
 .app_boards_container {
   flex: 1;
   width: 100%;
   height: 100%;
   overflow-x: auto;
   padding-top: 20px;
+  vertical-align: super;
+
   /* background-color: #b3cceb; */
 }
 
@@ -44,6 +39,7 @@
   /* background-color: #b3cceb; */
   align-items: center;
   justify-content: center;
+  vertical-align: super;
 }
 
 .app_boards_last {
@@ -200,7 +196,36 @@ p {
   }
 }
 
+.settings {
+  font-family: "Anton", sans-serif;
+  text-align: center;
+  color: #082d56;
+  font-size: 3rem;
+}
 
-.navbar {
-  background-color: #23d5ab;
+.projUserName {
+  font-size: 3vh;
+
+  /* padding-right: 16px; */
+  margin-left: 4%; 
+ 
+}
+
+.deleteArea {
+  border: solid black;
+  padding: 10px;
+  padding-bottom: 8px;
+}
+
+.dangerZone {
+  color: red;
+  font-size: 30px;
+  font-family: "Anton", sans-serif;
+
+}
+
+.currentUser {
+  font-family: "Anton", sans-serif;
+  color: #082d56;
+
 }

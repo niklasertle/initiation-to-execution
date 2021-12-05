@@ -1,14 +1,11 @@
 import React, { useRef, useState } from "react";
-// import './App.css';
 import "./Chat.css";
-
-// v9 compat packages are API compatible with v8 code
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 import "firebase/compat/firestore";
-
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useCollectionData } from "react-firebase-hooks/firestore";
+import SendIcon from "@mui/icons-material/Send";
 
 firebase.initializeApp({
   apiKey: "AIzaSyCclhjtmMR06z3mczyuaXyIVsThi35Lss0",
@@ -105,11 +102,11 @@ function ChatRoom() {
         <input
           value={formValue}
           onChange={(e) => setFormValue(e.target.value)}
-          placeholder="say something nice"
+          placeholder="Enter your message...."
         />
 
         <button type="submit" disabled={!formValue}>
-          🕊️
+          <SendIcon />
         </button>
       </form>
     </>
