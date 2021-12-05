@@ -3,6 +3,8 @@ import Board from "../Board";
 import { useMutation } from "@apollo/client";
 import Editable from "../Editabled/Editable";
 import Button from "@mui/material/Button";
+import ProjectCard from "../ProjectCard";
+
 
 import {
   ADD_KANBAN,
@@ -66,7 +68,7 @@ function loadKanban(kanban) {
   return boards;
 }
 
-function Kanban({ kanban, projectId }) {
+function Kanban({ kanban, projectId, title }) {
   const [boards, setBoards] = useState(loadKanban(kanban));
 
   const [addCard] = useMutation(ADD_KANBAN);
@@ -141,7 +143,7 @@ function Kanban({ kanban, projectId }) {
     <div className="kanbanBoard">
       <div className="app_nav"></div>
       <div className="app_boards_container">
-        <h1 className="kanbanTitle">Kanban Board</h1>{" "}
+        <h1 className="kanbanTitle">{title}</h1>
         <Button>
           <Editable
             text="+ Add Card"
