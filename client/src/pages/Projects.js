@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { Redirect } from 'react-router-dom';
+import { Redirect } from "react-router-dom";
 import ResponsiveAppBar from "../components/ProjectNavbar";
 import { useParams } from "react-router-dom";
-import Auth from '../utils/auth';
+import Auth from "../utils/auth";
 import Kanban from "../components/Kanban";
 import Settings from "../components/Settings";
 import ChatRoom from "../components/ChatRoom";
@@ -22,10 +22,10 @@ export default function Projects() {
   });
   const projectData = data?.project || [];
 
-  const { data: userData } = useQuery(GET_ME);
+  const { loading: userLoading, data: userData } = useQuery(GET_ME);
 
   // If the user data hasn't been returned yet return loading
-  if (loading) {
+  if (loading || userLoading) {
     return <h2>LOADING...</h2>;
   }
 
@@ -42,17 +42,15 @@ export default function Projects() {
     }
   }
 
-
-  if (Auth.isAllowedToView(projectData.users, userData.me._id)){
+  if (Auth.isAllowedToView(projectData.users, userData.me._id)) {
     return (
       <>
         <div className="m-3 ">
           <ResponsiveAppBar
-         
             currentPage={currentPage}
             setCurrentPage={setCurrentPage}
           />
-  
+
           <h1>{projectData.title}</h1>
           <p>{projectData.description}</p>
         </div>
