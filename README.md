@@ -1,4 +1,9 @@
-# **Initiation to Execution**
+<!-- # **Initiation to Execution** -->
+<p align="center">
+<img src="https://user-images.githubusercontent.com/84256748/144795716-4b735ae3-45e1-4bc9-9f4c-9f5fcb7ada65.gif" width="600" height="400" /> 
+  
+</p>
+
 
 # **Table of Contents**
 
@@ -26,7 +31,7 @@ When ready use **'yarn develop'** into the command line to run.
 
 ## **Links**
 
-![Screenshot of App]() <br>
+![demo_pic](https://user-images.githubusercontent.com/84256748/144798433-fa3f9aff-6e57-495d-a1f4-ef5a0596a5ba.gif)<br>
 [Walkthrough Video]() <br>
 [Deployed App](https://initiation-to-execution.herokuapp.com/) <br>
 [GitHub](https://github.com/niklasertle/initiation-to-execution)
