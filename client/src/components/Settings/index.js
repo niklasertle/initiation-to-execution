@@ -10,12 +10,42 @@ import {
 import { GET_ALL_USERS } from "../../utils/queries";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
-import { Tooltip } from "@mui/material";
-import { Fade } from "@mui/material";
-import { Zoom } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import SupervisedUserCircleIcon from "@mui/icons-material/SupervisedUserCircle";
 import PersonIcon from "@mui/icons-material/Person";
+
+import Box from "@mui/material/Box";
+import Card from "@mui/material/Card";
+import CardActions from "@mui/material/CardActions";
+import CardContent from "@mui/material/CardContent";
+import Typography from "@mui/material/Typography";
+
+const bull = (
+  <Box
+    component="span"
+    sx={{ display: "inline-block", mx: "2px", transform: "scale(0.8)" }}
+  >
+    •
+  </Box>
+);
+
+const card = (
+  <React.Fragment >
+    <CardContent>
+      {/* <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+        Word of the Day
+      </Typography> */}
+      <Typography variant="h5" component="div">
+        Important
+      </Typography>
+      <Typography sx={{ mb: 1.5 }} color="text.secondary">
+        Deleting a user account will delete all save data associated to the
+        account. Save data cannot be restored once it is deleted.
+      </Typography>
+    </CardContent>
+  
+  </React.Fragment>
+);
 
 export default function Settings({ users, projectId }) {
   // useState to update the list of users on the project
@@ -75,23 +105,28 @@ export default function Settings({ users, projectId }) {
           <h3 className="currentUser">
             <SupervisedUserCircleIcon /> Current users
           </h3>
-          <ul>
-            {projectUsers.map((user) => {
-              return (
-                <li key={`${user._id}userList`}>
-                  <p className="projUserName">
-                    {user.username}
-                    <Button
-                      variant="light"
-                      onClick={() => handleDeleteUser(user._id)}
-                    >
-                      X
-                    </Button>
-                  </p>
-                </li>
-              );
-            })}
-          </ul>
+          <Box sx={{ minWidth: 275 }}>
+            <Card variant="outlined">
+              {card}
+              <ul>
+                {projectUsers.map((user) => {
+                  return (
+                    <li key={`${user._id}userList`}>
+                      <p className="projUserName">
+                        {user.username}
+                        <Button
+                          variant="light"
+                          onClick={() => handleDeleteUser(user._id)}
+                        >
+                          X
+                        </Button>
+                      </p>
+                    </li>
+                  );
+                })}
+              </ul>
+            </Card>
+          </Box>
         </div>
         <div className="col-6">
           <h3 className="m-3" className="currentUser">
@@ -128,7 +163,7 @@ export default function Settings({ users, projectId }) {
               </div>
               <div className="form-group m-4">
                 <Button
-                 style={{ backgroundColor: "#082D56", color: "#FFFFFF" }}
+                  style={{ backgroundColor: "#082D56", color: "#FFFFFF" }}
                   className="btn btn-primary"
                   type="button"
                   onClick={handleFormSubmit}
@@ -145,20 +180,17 @@ export default function Settings({ users, projectId }) {
           </div>
         </div>
       </div>
-      
+
       <div className="deleteArea">
-      <p className="dangerZone"> Danger Zone</p>
+        <p className="dangerZone"> Danger Zone</p>
         <p>
           Once you delete a project, there is no going back. Please be certain.
-        
-       
         </p>
         <Button
-         style={{ backgroundColor: "red", color: "#FFFFFF" }}
-            onClick={async () => {
+          style={{ backgroundColor: "red", color: "#FFFFFF" }}
+          onClick={async () => {
             await deleteProject({ variables: { projectId } });
             window.location.replace("/");
-            
           }}
         >
           <DeleteIcon />

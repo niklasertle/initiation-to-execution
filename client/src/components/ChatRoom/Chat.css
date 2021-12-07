@@ -19,15 +19,16 @@
   padding: 10px;
   box-sizing: border-box;
   border-radius: 5px;
+  position: fixed;
 }
 
 .ChatBox section {
-  /* display: flex; */
+  display: flex;
   flex-direction: column;
   justify-content: center;
-  min-height: 62vh;
+  min-height: 74vh;
   background-color: rgba(238, 235, 235, 0.39);
-  margin-bottom: 10%;
+  /* margin-bottom: 10%; */
 }
 
 ChatRoom {
@@ -53,7 +54,7 @@ ChatRoom::-webkit-scrollbar-thumb {
 
 .ChatForm {
   height: 10vh;
-  /* position: fixed; */
+  position: fixed;
   bottom: 0;
   background-color: rgb(24, 23, 23);
   width: 100%;
