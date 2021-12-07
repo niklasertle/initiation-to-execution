@@ -60,8 +60,11 @@ export default function LoginForm() {
           style={{
             backgroundImage: `url(${LandingPic})`,
             backgroundSize: "cover",
+        
           }}
-        ></Grid>
+        > 
+          
+        </Grid>
         <Grid
           item
           xs={12}
