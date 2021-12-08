@@ -16,21 +16,11 @@ import PersonIcon from "@mui/icons-material/Person";
 
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 
-const bull = (
-  <Box
-    component="span"
-    sx={{ display: "inline-block", mx: "2px", transform: "scale(0.8)" }}
-  >
-    •
-  </Box>
-);
-
 const card = (
-  <React.Fragment >
+  <React.Fragment>
     <CardContent>
       {/* <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
         Word of the Day
@@ -43,7 +33,6 @@ const card = (
         account. Save data cannot be restored once it is deleted.
       </Typography>
     </CardContent>
-  
   </React.Fragment>
 );
 
@@ -129,7 +118,7 @@ export default function Settings({ users, projectId }) {
           </Box>
         </div>
         <div className="col-6">
-          <h3 className="m-3" className="currentUser">
+          <h3 className="currentUser m-3">
             <PersonIcon /> Add a user
           </h3>
           <div>

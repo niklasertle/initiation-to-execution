@@ -1,14 +1,14 @@
-const db = require('../config/connection')
+const db = require("../config/connection");
 const { User, Project } = require("../models");
 
-const userData = require('./userData.json');
+const userData = require("./userData.json");
 
-db.once('open', async () => {
-    await User.deleteMany({});
-    await Project.deleteMany({});
+db.once("open", async () => {
+  await User.deleteMany({});
+  await Project.deleteMany({});
 
-    const users = await User.insertMany(userData);
+  const users = await User.insertMany(userData);
 
-    console.log('Users seeded!');
-    process.exit(0);
-})
+  console.log("Users seeded!");
+  process.exit(0);
+});

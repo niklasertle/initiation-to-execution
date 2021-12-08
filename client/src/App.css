@@ -27,16 +27,12 @@
   overflow-x: auto;
   padding-top: 20px;
   vertical-align: super;
-
-  /* background-color: #b3cceb; */
 }
 
 .app_boards {
-  /* width: fit-content; */
-  /* padding: 10px 30px; */
   display: flex;
   gap: 40px;
-  /* background-color: #b3cceb; */
+
   align-items: flex-start;
   justify-content: center;
   vertical-align: super;
@@ -163,9 +159,7 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  /* background-color: #101010; */
 }
-
 
 @keyframes repeat {
   0% {
@@ -203,8 +197,7 @@ body {
 
 .projUserName {
   font-size: 3vh;
-  margin-left: 4%; 
- 
+  margin-left: 4%;
 }
 
 .deleteArea {
@@ -218,13 +211,9 @@ body {
   color: red;
   font-size: 30px;
   font-family: "Anton", sans-serif;
-
-
 }
 
 .currentUser {
   font-family: "Anton", sans-serif;
   color: #082d56;
-
 }
-

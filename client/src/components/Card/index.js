@@ -2,26 +2,17 @@ import { Button } from "@mui/material";
 import React, { useState } from "react";
 import { MoreHorizontal } from "react-feather";
 import DeleteIcon from "@mui/icons-material/Delete";
-import Dropdown from "../Dropdown";
 
 import "./Card.css";
-import CardInfo from "./CardInfo";
 
 function Card(props) {
   const [showDropdown, setShowDropdown] = useState(false);
-  const [showModal, setShowModal] = useState(false);
+  const [setShowModal] = useState(false);
 
   const { _id, title } = props.card;
 
   return (
     <>
-      {showModal && (
-        <CardInfo
-          onClose={() => setShowModal(false)}
-          card={props.card}
-          boardId={props.boardId}
-        />
-      )}
       <div
         className="card"
         draggable

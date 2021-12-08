@@ -2,16 +2,8 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import Button from "@mui/material/Button";
-import List from "@mui/material/List";
-import Divider from "@mui/material/Divider";
-import ListItem from "@mui/material/ListItem";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
 import Auth from "../../utils/auth";
 import projects_pic from "../../images/projects_pic.png";
-import { Link } from "react-router-dom";
 const pages = ["Kanban", "Chat", "Settings"];
 
 export default function TemporaryDrawer({ setCurrentPage }) {
@@ -54,8 +46,7 @@ export default function TemporaryDrawer({ setCurrentPage }) {
       ))}
       <Button
         variant="contained"
-       
-        sx={{ mb: 1, p: 1, mr: 3,  }}
+        sx={{ mb: 1, p: 1, mr: 3 }}
         style={{ backgroundColor: "#082D56", color: "#FFFFFF" }}
         onClick={() => {
           window.location.replace("/");
@@ -66,7 +57,7 @@ export default function TemporaryDrawer({ setCurrentPage }) {
       </Button>
       <Button
         variant="contained"
-        sx={{ mb: 1, p: 1, mr: 3,  }}
+        sx={{ mb: 1, p: 1, mr: 3 }}
         style={{ backgroundColor: "#082D56", color: "#FFFFFF" }}
         onClick={() => {
           Auth.logout();

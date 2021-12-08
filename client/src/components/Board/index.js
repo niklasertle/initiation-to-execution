@@ -5,7 +5,6 @@ import "./Board.css";
 function Board(props) {
   return (
     <div className="board">
-
       <div className="board_cards custom-scroll">
         <p className="board_header_title">
           {props.board?.title}

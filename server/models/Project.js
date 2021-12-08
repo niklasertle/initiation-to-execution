@@ -6,7 +6,7 @@ const projectSchema = new Schema({
   title: {
     type: String,
     unique: true,
-    required: true
+    required: true,
   },
   description: {
     type: String,
@@ -15,10 +15,10 @@ const projectSchema = new Schema({
   kanban: [kanbanSchema],
   startDate: {
     type: String,
-    default: Date.now()
+    default: Date.now(),
   },
   endDate: {
-    type: String
+    type: String,
   },
 });
 
