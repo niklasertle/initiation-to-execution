@@ -5,8 +5,8 @@
 .editable_display {
   padding: 6px 12px;
   border-radius: 3px;
-  background-color: #eee;
-  color: #000;
+  background-color: #082d56;
+  color: rgb(255, 255, 255);
   cursor: pointer;
   width: fit-content;
   transition: 200ms;
