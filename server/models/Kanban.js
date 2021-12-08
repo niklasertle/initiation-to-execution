@@ -3,10 +3,10 @@ const { Schema } = require("mongoose");
 const kanbanSchema = new Schema({
   title: {
     type: String,
-    required: true
+    required: true,
   },
   status: {
-    type: String
+    type: String,
   },
 });
 

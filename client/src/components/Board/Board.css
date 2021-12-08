@@ -36,20 +36,18 @@
 }
 
 .board_dropdown {
-  /* box-shadow: 1px 0px 20px rgba(0, 0, 0, 0.12); */
   padding: 2px;
   width: 100px !important;
   cursor: default;
 }
-.board_dropdown  {
-  /* border-bottom: 1px solid #f8f8f8; */
+.board_dropdown {
   cursor: pointer;
   background-color: white;
   color: #082d56;
   border-radius: 0.25rem;
 }
 
-.board_dropdown:hover{
+.board_dropdown:hover {
   background-color: rgb(5, 110, 180);
 }
 
@@ -86,5 +84,4 @@
 
 .projectDesc {
   text-align: center;
-
 }

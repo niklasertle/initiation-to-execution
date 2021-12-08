@@ -3,7 +3,6 @@ import Board from "../Board";
 import { useMutation } from "@apollo/client";
 import Editable from "../Editabled/Editable";
 import Button from "@mui/material/Button";
-import ProjectCard from "../ProjectCard";
 
 import {
   ADD_KANBAN,

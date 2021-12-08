@@ -73,7 +73,7 @@ export default function Profile() {
       <>
         <h1 className="userName">
           {userData.username}
-          <img className="logo" src={Logo} alt='Logo'/>
+          <img className="logo" src={Logo} alt="Logo" />
           <p className="greeting">.....visualize what you can do.</p>
 
           <Modal

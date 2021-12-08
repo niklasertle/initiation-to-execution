@@ -27,7 +27,9 @@ function ChatTime() {
   return (
     <div className="ChatBox">
       <header>
-        <h1>💬</h1>
+        <span role="img" aria-label="chat">
+          💬
+        </span>
         <SignOut />
       </header>
 
@@ -122,6 +124,7 @@ function ChatMessage(props) {
     <>
       <div className={`message ${messageClass}`}>
         <img
+          alt="user icon"
           className="userPhoto"
           src={
             photoURL || "https://api.adorable.io/avatars/23/abott@adorable.png"
