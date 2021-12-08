@@ -60,11 +60,11 @@ export default function LoginForm() {
           style={{
             backgroundImage: `url(${LandingPic})`,
             backgroundSize: "cover",
-        
+            backgroundRepeat: "no-repeat",
+            textAlign: "center",
           }}
-        > 
-          
-        </Grid>
+        > </Grid>
+
         <Grid
           item
           xs={12}
@@ -86,7 +86,7 @@ export default function LoginForm() {
             <Avatar sx={{ m: 1, bgcolor: "rgb(8, 45, 86)" }}>
               <LockOutlinedIcon
                 sx={{
-                  backgroundColor:"rgb(8, 45, 86)",
+                  backgroundColor: "rgb(8, 45, 86)",
                 }}
               />
             </Avatar>
@@ -124,7 +124,7 @@ export default function LoginForm() {
                 type="submit"
                 fullWidth
                 variant="contained"
-                sx={{ mt: 3, mb: 2, backgroundColor:"rgb(8, 45, 86)",}}
+                sx={{ mt: 3, mb: 2, backgroundColor: "rgb(8, 45, 86)" }}
               >
                 Sign In
               </Button>
