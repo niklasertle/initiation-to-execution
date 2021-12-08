@@ -10,8 +10,9 @@ import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
 import Auth from "../../utils/auth";
-import projects_pic from "../../images/projects_pic.png"
-const pages = ["Kanban", "Chat", "Settings", "Profile"];
+import projects_pic from "../../images/projects_pic.png";
+import { Link } from "react-router-dom";
+const pages = ["Kanban", "Chat", "Settings"];
 
 export default function TemporaryDrawer({ setCurrentPage }) {
   const [state, setState] = React.useState({
@@ -34,7 +35,10 @@ export default function TemporaryDrawer({ setCurrentPage }) {
 
   const list = (anchor) => (
     <Box
-      sx={{ width: anchor === "top" || anchor === "bottom" ? "auto" : 250, ml: 5}}
+      sx={{
+        width: anchor === "top" || anchor === "bottom" ? "auto" : 250,
+        ml: 5,
+      }}
       role="presentation"
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
@@ -48,10 +52,21 @@ export default function TemporaryDrawer({ setCurrentPage }) {
           {page}
         </Button>
       ))}
-
       <Button
         variant="contained"
-        sx={{ mb: 1, p: 1, mr: 3, ml: 5}}
+       
+        sx={{ mb: 1, p: 1, mr: 3,  }}
+        style={{ backgroundColor: "#082D56", color: "#FFFFFF" }}
+        onClick={() => {
+          window.location.replace("/");
+        }}
+      >
+        {" "}
+        Home
+      </Button>
+      <Button
+        variant="contained"
+        sx={{ mb: 1, p: 1, mr: 3,  }}
         style={{ backgroundColor: "#082D56", color: "#FFFFFF" }}
         onClick={() => {
           Auth.logout();
@@ -59,22 +74,24 @@ export default function TemporaryDrawer({ setCurrentPage }) {
       >
         Logout
       </Button>
-   
     </Box>
   );
 
   return (
     <div>
       {["Menu"].map((anchor) => (
-        <React.Fragment key={anchor} >
-          <Button onClick={toggleDrawer(anchor, true)} >{anchor}</Button>
-          <Drawer 
+        <React.Fragment key={anchor}>
+          <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button>
+          <Drawer
             anchor={anchor}
             open={state[anchor]}
             onClose={toggleDrawer(anchor, false)}
-            style={{ backgroundColor: "#082D56", color: "#FFFFFF",
-            backgroundImage: `url(${projects_pic})`,
-            backgroundSize: "cover",}}
+            style={{
+              backgroundColor: "#082D56",
+              color: "#FFFFFF",
+              backgroundImage: `url(${projects_pic})`,
+              backgroundSize: "cover",
+            }}
           >
             {list(anchor)}
           </Drawer>
