@@ -31,7 +31,7 @@ When ready use **'yarn develop'** into the command line to run.
 ## **Links**
 
 ![demo_pic](https://user-images.githubusercontent.com/84256748/144798433-fa3f9aff-6e57-495d-a1f4-ef5a0596a5ba.gif)<br>
-[Walkthrough Video]() <br>
+[Walkthrough Video](https://youtu.be/eMENlfzG3y0) <br>
 [Deployed App](https://initiation-to-execution.herokuapp.com/) <br>
 [GitHub](https://github.com/niklasertle/initiation-to-execution)
 
